@@ -1,0 +1,1296 @@
+/* ==========================================
+   COMB SMART SURVEILLANCE SYSTEM
+   DASHBOARD.CSS
+========================================== */
+
+/* ==========================================
+   GLOBAL
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+.dashboard {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    background: #06111d;
+    color: #f1f5f9;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.sidebar {
+    width: 236px;
+    min-width: 236px;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    background: #071522;
+    border-right: 1px solid #14283a;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-logo,
+.sidebar-navigation,
+.sidebar-section,
+.sidebar-bottom {
+    flex-shrink: 0;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* ==========================================
+   SIDEBAR LOGO
+========================================== */
+
+.sidebar-logo {
+    height: 88px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #14283a;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 50px;
+    min-width: 40px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.logo-icon img {
+    width: 40px;
+    height: 50px;
+    max-width: 40px;
+    max-height: 50px;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0;
+    filter: drop-shadow(0 0 7px rgba(59, 130, 246, 0.20));
+}
+
+.logo-text {
+    min-width: 0;
+}
+
+.logo-text h2 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.logo-text span {
+    display: block;
+    margin-top: 3px;
+    color: #94a3b8;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* ==========================================
+   SIDEBAR NAVIGATION
+========================================== */
+
+.sidebar-navigation {
+    padding: 20px 9px 8px;
+}
+
+.sidebar-item {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 6px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: inherit;
+    text-align: left;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.sidebar-item svg {
+    width: 20px;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.sidebar-item:hover {
+    background: #102338;
+    color: #f8fafc;
+}
+
+.sidebar-item.active {
+    background: #2947d6;
+    color: #ffffff;
+    box-shadow:
+        0 5px 18px rgba(37, 67, 214, 0.25);
+}
+
+.sidebar-item.active:hover {
+    background: #304edb;
+}
+
+/* ==========================================
+   SIDEBAR NOTIFICATION COUNT
+========================================== */
+
+.sidebar-notification-count {
+    min-width: 25px;
+    height: 25px;
+    margin-left: auto;
+    padding: 0 7px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #3344d8;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ==========================================
+   SYSTEM SECTION
+========================================== */
+
+.sidebar-section {
+    margin-top: 10px;
+    padding: 20px 14px 10px;
+    border-top: 1px solid #14283a;
+}
+
+.sidebar-section-title {
+    margin-bottom: 17px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.system-item,
+.system-button {
+    width: 100%;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    background: transparent;
+    color: #cbd5e1;
+    font-family: inherit;
+    font-size: 13px;
+    text-align: left;
+}
+
+.system-item svg,
+.system-button svg {
+    width: 19px;
+    color: #a5b4c5;
+    flex-shrink: 0;
+}
+
+.system-item span:nth-child(2),
+.system-button span {
+    flex: 1;
+}
+
+.system-active,
+.system-inactive {
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.system-active {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10e981;
+}
+
+.system-inactive {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.system-button {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.system-button:hover {
+    color: #ffffff;
+}
+
+/* ==========================================
+   SIDEBAR LOGOUT
+========================================== */
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 15px 15px 20px;
+    border-top: 1px solid #14283a;
+}
+
+.logout-button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0 10px;
+    color: #ff4d4d;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.logout-button:hover {
+    background: rgba(239, 68, 68, 0.08);
+    border-radius: 7px;
+}
+
+/* ==========================================
+   MAIN CONTENT
+========================================== */
+
+.main-content {
+    width: calc(100% - 236px);
+    min-width: 0;
+    min-height: 100vh;
+    margin-left: 236px;
+    display: flex;
+    flex-direction: column;
+    background:
+        radial-gradient(circle at 65% 10%,
+            rgba(18, 52, 82, 0.18),
+            transparent 35%),
+        #06111d;
+}
+
+/* ==========================================
+   TOP HEADER
+========================================== */
+
+.top-header {
+    height: 88px;
+    min-height: 88px;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #14283a;
+    background: rgba(6, 17, 29, 0.96);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+}
+
+.header-left h1 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 26px;
+    font-weight: 650;
+}
+
+.desktop-menu-button {
+    width: 32px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: #dbe5ef;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* ==========================================
+   HEADER NOTIFICATIONS
+========================================== */
+
+.header-notification {
+    width: 43px;
+    height: 43px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: #dbe5ef;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.header-notification:hover {
+    color: #ffffff;
+}
+
+.header-notification span {
+    position: absolute;
+    top: -2px;
+    right: -3px;
+    min-width: 21px;
+    height: 21px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f43f5e;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    border: 2px solid #06111d;
+}
+
+/* ==========================================
+   LAST LOGIN
+========================================== */
+
+.last-login-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 145px;
+}
+
+.last-login-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dbe5ef;
+    font-size: 27px;
+}
+
+.last-login-information {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.last-login-information strong {
+    color: #f8fafc;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.last-login-information span {
+    color: #a1afbd;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.header-divider {
+    width: 1px;
+    height: 42px;
+    background: #263b4d;
+}
+
+/* ==========================================
+   ADMIN PROFILE
+========================================== */
+
+.admin-profile {
+    min-width: 190px;
+    padding: 4px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+}
+
+.admin-profile:hover {
+    opacity: 0.9;
+}
+
+.admin-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(135deg,
+            #d9e7f7,
+            #7c9fbe);
+    color: #19344c;
+    font-size: 18px;
+    border: 2px solid #273b4d;
+    flex-shrink: 0;
+}
+
+.admin-information {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.admin-information strong {
+    color: #f8fafc;
+    font-size: 14px;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+.admin-information small {
+    color: #9aaabd;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.admin-online {
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    left: 31px;
+    bottom: 2px;
+    border-radius: 50%;
+    background: #22c55e;
+    border: 2px solid #06111d;
+}
+
+.profile-arrow {
+    margin-left: auto;
+    color: #d7e0ea;
+    font-size: 16px;
+}
+
+/* ==========================================
+   DASHBOARD CONTENT
+========================================== */
+
+.dashboard-content {
+    flex: 1;
+    min-width: 0;
+    padding: 22px 22px 20px;
+}
+
+/* ==========================================
+   STATISTICS
+   FIVE CARDS ON ONE ROW
+========================================== */
+
+.stats-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* ==========================================
+   STAT CARDS
+========================================== */
+
+.stat-card {
+    min-width: 0;
+    min-height: 108px;
+    padding: 15px 12px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #182d40;
+    border-radius: 9px;
+    background:
+        linear-gradient(145deg,
+            #0a1a2a,
+            #071522);
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Hide statistics icons */
+
+.stat-icon {
+    display: none !important;
+}
+
+/* ==========================================
+   STAT INFORMATION
+========================================== */
+
+.stat-information {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-information>span {
+    display: block;
+    margin: 0;
+    color: #e2e8f0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: normal;
+    overflow-wrap: normal;
+}
+
+.stat-information strong {
+    display: block;
+    margin-top: 7px;
+    color: #f8fafc;
+    font-size: 25px;
+    line-height: 1.05;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.stat-information small {
+    display: block;
+    margin-top: 7px;
+    color: #a2afbf;
+    font-size: 10px;
+    line-height: 1.3;
+    white-space: normal;
+}
+
+.green-text,
+.red-text {
+    color: #a2afbf !important;
+}
+
+.active-status {
+    color: #10e981 !important;
+    font-size: 23px !important;
+    font-weight: 700 !important;
+}
+
+.inactive-status {
+    color: #ef4444 !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+}
+
+/* ==========================================
+   LIVE CAMERA SECTION
+========================================== */
+
+.live-camera-section {
+    width: 100%;
+    padding: 17px 15px 22px;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================
+   SECTION HEADING
+========================================== */
+
+.section-heading {
+    min-height: 45px;
+    margin-bottom: 18px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* ==========================================
+   TOP VIEW ALL CAMERAS BUTTON
+========================================== */
+
+.view-all-cameras-top {
+    height: 36px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #007fd2;
+    border-radius: 5px;
+    background: rgba(0, 111, 255, 0.04);
+    color: #00a2ff;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.view-all-cameras-top:hover {
+    background: rgba(0, 140, 255, 0.12);
+    border-color: #00a2ff;
+    color: #42b8ff;
+}
+
+.view-all-cameras-top svg {
+    font-size: 13px;
+}
+
+/* ==========================================
+   CAMERA GRID
+========================================== */
+
+.camera-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 13px;
+}
+
+/* ==========================================
+   CAMERA CARD
+========================================== */
+
+.camera-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #183047;
+    border-radius: 9px;
+    background: #071522 !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.15);
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.camera-card:hover {
+    transform: translateY(-2px);
+    border-color: #244b68;
+}
+
+/* ==========================================
+   CAMERA HEADER
+========================================== */
+
+.camera-card-header {
+    min-height: 31px;
+    padding: 9px 8px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.camera-name {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.camera-name strong {
+    overflow: hidden;
+    color: #f1f5f9;
+    font-size: 11px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.status-dot {
+    width: 5px;
+    height: 5px;
+    min-width: 5px;
+    border-radius: 50%;
+}
+
+.status-dot.online {
+    background: #00e78a;
+    box-shadow:
+        0 0 6px rgba(0, 231, 138, 0.7);
+}
+
+.status-dot.offline {
+    background: #ff3b30;
+}
+
+/* ==========================================
+   CAMERA STATUS
+========================================== */
+
+.camera-status {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: #f1f5f9;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.camera-status.live,
+.camera-status.online {
+    color: #00e78a !important;
+}
+
+.camera-status.offline {
+    color: #ff4b4b !important;
+}
+
+/* ==========================================
+   CAMERA LOCATION
+========================================== */
+
+.camera-location {
+    padding: 3px 8px 8px;
+    color: #d0d9e3;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================
+   CAMERA SCREEN
+========================================== */
+
+.camera-screen {
+    width: 100%;
+    height: 112px;
+    position: relative;
+    overflow: hidden;
+    background: #06111d !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.camera-screen img,
+.camera-screen video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background: #06111d !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.camera-screen::before,
+.camera-screen::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* ==========================================
+   NO SIGNAL
+========================================== */
+
+.no-signal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background:
+        linear-gradient(145deg,
+            #081521,
+            #06101b) !important;
+    color: #8998a8;
+}
+
+.no-signal svg {
+    font-size: 27px;
+    opacity: 0.9;
+}
+
+.no-signal strong {
+    color: #9aa8b8;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+}
+
+.no-signal span {
+    color: #66798b;
+    font-size: 9px;
+}
+
+/* ==========================================
+   LIVE INDICATOR
+========================================== */
+
+.live-indicator {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #ffffff;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.live-indicator span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #00e78a;
+}
+
+/* ==========================================
+   CAMERA DETAILS
+========================================== */
+
+.camera-details {
+    padding: 7px 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    border-top: 1px solid #14283a;
+}
+
+.camera-details div {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.camera-details span {
+    color: #6f8295;
+    font-size: 8px;
+}
+
+.camera-details strong {
+    overflow: hidden;
+    color: #cbd5e1;
+    font-size: 9px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================
+   CAMERA BUTTONS
+========================================== */
+
+.camera-buttons {
+    padding: 0 8px 9px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.camera-buttons button {
+    min-height: 29px;
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid #23445e;
+    border-radius: 4px;
+    background: #0b1c2d;
+    color: #b9c7d6;
+    font-family: inherit;
+    font-size: 9px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.camera-buttons button:hover {
+    background: #12304a;
+    border-color: #2c668e;
+    color: #ffffff;
+}
+
+.camera-buttons svg {
+    font-size: 9px;
+}
+
+/* ==========================================
+   LIVE VIEW BUTTON
+========================================== */
+
+.camera-action.live-view {
+    background: #0d2f82;
+    border-color: #123a9f;
+    color: #ffffff;
+}
+
+.camera-action.live-view:hover {
+    background: #123a9f;
+    border-color: #1948b8;
+}
+
+/* ==========================================
+   DISABLED BUTTON
+========================================== */
+
+.camera-action.disabled {
+    background: #0b1825;
+    border-color: #162b3d;
+    color: #526476;
+    cursor: not-allowed;
+}
+
+.camera-action.disabled:hover {
+    background: #0b1825;
+    border-color: #162b3d;
+    color: #526476;
+}
+
+/* ==========================================
+   PLAYBACK BUTTON
+========================================== */
+
+.camera-action.playback {
+    background: #172637;
+    color: #d6dee8;
+}
+
+.camera-action.playback:hover {
+    background: #20364b;
+    color: #ffffff;
+}
+
+/* ==========================================
+   VIEW ALL CAMERAS
+========================================== */
+
+.view-all-cameras {
+    height: 45px;
+    margin: 20px auto 0;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #008cff;
+    border-radius: 5px;
+    background: rgba(0, 111, 255, 0.04);
+    color: #00a2ff;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.view-all-cameras:hover {
+    background: rgba(0, 140, 255, 0.12);
+    color: #42b8ff;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.dashboard-footer {
+    min-height: 55px;
+    padding: 0 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #14283a;
+    color: #8b9bad;
+    font-size: 11px;
+}
+
+/* ==========================================
+   MOBILE MENU
+========================================== */
+
+.mobile-menu-button {
+    display: none;
+}
+
+.sidebar-overlay {
+    display: none;
+}
+
+/* ==========================================
+   RESPONSIVE - LARGE SCREENS
+========================================== */
+
+@media (max-width: 1450px) {
+
+    /* Keep all five statistics in one row */
+
+    .stats-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .camera-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE - MEDIUM SCREENS
+========================================== */
+
+@media (max-width: 1150px) {
+
+    .camera-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .last-login-header {
+        min-width: 125px;
+    }
+
+    .admin-profile {
+        min-width: 160px;
+    }
+
+    .stats-grid {
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 12px 9px;
+    }
+
+    .stat-information>span {
+        font-size: 12px;
+    }
+
+    .stat-information strong {
+        font-size: 23px;
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE - TABLET
+========================================== */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.show-sidebar {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .desktop-menu-button {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        width: 45px;
+        height: 45px;
+        position: fixed;
+        top: 21px;
+        left: 15px;
+        z-index: 1200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #203b53;
+        border-radius: 7px;
+        background: #0a1b2b;
+        color: #ffffff;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .top-header {
+        padding-left: 75px;
+    }
+
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 900;
+        background: rgba(0, 0, 0, 0.55);
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE - SMALL TABLET
+========================================== */
+
+@media (max-width: 800px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .camera-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .last-login-header {
+        display: none;
+    }
+
+    .header-divider {
+        display: none;
+    }
+
+    .admin-information {
+        display: none;
+    }
+
+    .admin-profile {
+        min-width: auto;
+    }
+
+    .profile-arrow {
+        display: none;
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE - MOBILE
+========================================== */
+
+@media (max-width: 560px) {
+
+    .dashboard-content {
+        padding: 18px 10px;
+    }
+
+    .top-header {
+        height: 72px;
+        min-height: 72px;
+        padding-right: 12px;
+    }
+
+    .header-left {
+        gap: 15px;
+    }
+
+    .header-left h1 {
+        font-size: 21px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .camera-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .camera-screen {
+        height: 190px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .view-all-cameras-top {
+        width: 100%;
+    }
+
+    .dashboard-footer {
+        padding: 15px;
+        flex-direction: column;
+        gap: 7px;
+        text-align: center;
+    }
+
+    .header-right {
+        gap: 8px;
+    }
+
+}

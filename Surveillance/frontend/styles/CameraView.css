@@ -1,0 +1,671 @@
+/* ==========================================
+   COMB SMART SURVEILLANCE SYSTEM
+   CAMERAVIEW.CSS
+========================================== */
+
+/* ==========================================
+   PAGE CONTAINER
+========================================== */
+
+.camera-page {
+    min-height: 100vh;
+    padding: 30px;
+    background: #f1f5f9;
+    color: #0f172a;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: background 0.3s, color 0.3s;
+}
+
+.camera-page *,
+.camera-page *::before,
+.camera-page *::after {
+    box-sizing: border-box;
+}
+
+.camera-page.dark {
+    background: #081320;
+    color: #f8fafc;
+}
+
+/* ==========================================
+   TOP BAR
+========================================== */
+
+.camera-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 26px;
+}
+
+.camera-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 11px 18px;
+    background: #ffffff;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.camera-back-button:hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+.camera-page.dark .camera-back-button {
+    background: #142337;
+    border-color: #293c52;
+    color: #f1f5f9;
+}
+
+.camera-page.dark .camera-back-button:hover {
+    background: #20344c;
+}
+
+/* ==========================================
+   CAMERA HEADING
+========================================== */
+
+.camera-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.camera-heading h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.camera-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.camera-status-badge svg {
+    font-size: 9px;
+}
+
+.camera-status-badge.online {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.camera-status-badge.offline {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.camera-page.dark .camera-status-badge.online {
+    background: #123b2e;
+    color: #4ade80;
+}
+
+.camera-page.dark .camera-status-badge.offline {
+    background: #451b25;
+    color: #f87171;
+}
+
+/* ==========================================
+   MAIN CAMERA CARD
+========================================== */
+
+.camera-main-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    overflow: hidden;
+}
+
+.camera-page.dark .camera-main-card {
+    background: #111e30;
+    border-color: #25374b;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================
+   SECTION HEADERS
+========================================== */
+
+.camera-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.camera-section-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.camera-fullscreen-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 16px;
+    background: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.camera-fullscreen-button:hover {
+    background: #dbeafe;
+}
+
+.camera-page.dark .camera-fullscreen-button {
+    background: #172f4c;
+    color: #93c5fd;
+    border-color: #28476b;
+}
+
+/* ==========================================
+   LIVE CAMERA SCREEN
+========================================== */
+
+.live-screen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 300px;
+    background: #020617;
+    border: 1px solid #263448;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.live-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #000000;
+}
+
+.live-screen:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    background: #000000;
+}
+
+.live-screen:fullscreen .live-feed {
+    object-fit: contain;
+}
+
+/* ==========================================
+   LIVE INDICATOR
+========================================== */
+
+.camera-live-indicator {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    color: #ffffff;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+.live-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+    animation: livePulse 1.5s infinite;
+}
+
+@keyframes livePulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+}
+
+/* ==========================================
+   FULLSCREEN OVERLAY BUTTON
+========================================== */
+
+.fullscreen-overlay-button {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 9px;
+    background: rgba(15, 23, 42, 0.75);
+    color: #ffffff;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    z-index: 2;
+}
+
+.fullscreen-overlay-button:hover {
+    background: #2563eb;
+}
+
+/* ==========================================
+   NO SIGNAL SCREEN
+========================================== */
+
+.no-signal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+    color: #94a3b8;
+}
+
+.no-signal-icon {
+    font-size: 50px;
+    margin-bottom: 18px;
+    color: #64748b;
+}
+
+.no-signal h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 0 0 10px;
+}
+
+.no-signal p {
+    font-size: 14px;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* ==========================================
+   MANUAL RECORDING CONTROLS
+   Optional CSS classes for recording section
+========================================== */
+
+.camera-recording-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px;
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.camera-page.dark .camera-recording-controls {
+    background: #152536;
+    border-color: #293c52;
+}
+
+.camera-recording-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.camera-recording-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #94a3b8;
+    flex-shrink: 0;
+}
+
+.camera-recording-dot.active {
+    background: #ef4444;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    animation: recordingPulse 1.2s infinite;
+}
+
+@keyframes recordingPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.camera-recording-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.camera-recording-text strong {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.camera-recording-text span {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.camera-page.dark .camera-recording-text span {
+    color: #cbd5e1;
+}
+
+.camera-recording-text .recording-active-text {
+    color: #ef4444;
+}
+
+.camera-record-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.camera-record-button:hover:not(:disabled) {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.camera-record-button.stop {
+    background: #dc2626;
+}
+
+.camera-record-button.stop:hover:not(:disabled) {
+    background: #b91c1c;
+}
+
+.camera-record-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.camera-recording-error {
+    color: #dc2626;
+    font-size: 13px;
+    margin: 12px 0 0;
+    padding: 0 15px;
+}
+
+/* ==========================================
+   CAMERA INFORMATION CARD
+========================================== */
+
+.camera-information-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+.camera-page.dark .camera-information-card {
+    background: #111e30;
+    border-color: #25374b;
+}
+
+.camera-information-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.camera-information-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 17px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    min-width: 0;
+}
+
+.camera-page.dark .camera-information-item {
+    background: #152536;
+    border-color: #293c52;
+}
+
+.camera-info-label {
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.camera-page.dark .camera-info-label {
+    color: #94a3b8;
+}
+
+.camera-information-item strong {
+    font-size: 14px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.camera-info-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.camera-info-status svg {
+    font-size: 9px;
+}
+
+.camera-info-status.online {
+    color: #16a34a;
+}
+
+.camera-info-status.offline {
+    color: #dc2626;
+}
+
+.camera-page.dark .camera-info-status.online {
+    color: #4ade80;
+}
+
+.camera-page.dark .camera-info-status.offline {
+    color: #f87171;
+}
+
+/* ==========================================
+   CAMERA NOT FOUND
+========================================== */
+
+.camera-error-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 75px 25px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+}
+
+.camera-error-card>svg {
+    font-size: 48px;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.camera-error-card h2 {
+    font-size: 23px;
+    margin: 0 0 10px;
+}
+
+.camera-error-card p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.camera-page.dark .camera-error-card {
+    background: #111e30;
+    border-color: #25374b;
+}
+
+.camera-page.dark .camera-error-card p {
+    color: #94a3b8;
+}
+
+/* ==========================================
+   TABLET RESPONSIVENESS
+========================================== */
+
+@media (max-width: 1024px) {
+
+    .camera-page {
+        padding: 22px;
+    }
+
+    .camera-information-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .camera-heading h1 {
+        font-size: 23px;
+    }
+
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+========================================== */
+
+@media (max-width: 600px) {
+
+    .camera-page {
+        padding: 14px;
+    }
+
+    .camera-top-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .camera-back-button {
+        align-self: flex-start;
+    }
+
+    .camera-heading {
+        width: 100%;
+    }
+
+    .camera-heading h1 {
+        font-size: 21px;
+    }
+
+    .camera-main-card,
+    .camera-information-card {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .camera-section-header h2 {
+        font-size: 16px;
+    }
+
+    .live-screen {
+        min-height: 210px;
+        aspect-ratio: 16 / 9;
+    }
+
+    .camera-information-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .camera-information-item {
+        padding: 15px;
+    }
+
+    .camera-recording-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .camera-record-button {
+        width: 100%;
+    }
+
+    .camera-fullscreen-button {
+        padding: 9px 12px;
+    }
+
+    .no-signal-icon {
+        font-size: 36px;
+    }
+
+    .no-signal h2 {
+        font-size: 18px;
+    }
+
+}

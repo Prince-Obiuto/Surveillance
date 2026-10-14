@@ -1,27 +1,42 @@
 const db = require("../config/db");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+const comparePassword = async (plainPassword, passwordHash) => {
+    try {
+        return await bcrypt.compare(plainPassword, passwordHash);
+    } catch (_error) {
+        return false;
+    }
+};
 
 // ==========================================
 // Login Administrator
 // ==========================================
 const login = (req, res) => {
 
-    console.log("===== LOGIN REQUEST RECEIVED =====");
-    console.log(req.body);
-
     const { username, password } = req.body;
 
-    const ip =
-        req.headers["x-forwarded-for"] ||
-        req.socket.remoteAddress ||
-        req.ip;
+    if (
+        typeof username !== "string" ||
+        typeof password !== "string" ||
+        !username.trim() ||
+        !password
+    ) {
+        return res.status(400).json({
+            success: false,
+            message: "Username and password are required.",
+        });
+    }
+
+    const ip = req.ip;
 
     const device = req.headers["user-agent"];
     const browser = req.headers["user-agent"];
 
-    const sql =
-        "SELECT * FROM administrators WHERE username = ? AND password = ?";
+    const sql = "SELECT * FROM administrators WHERE username = ? LIMIT 1";
 
-    db.query(sql, [username, password], (err, result) => {
+    db.query(sql, [username.trim()], async (err, result) => {
 
         if (err) {
             console.error(err);
@@ -32,7 +47,6 @@ const login = (req, res) => {
             });
         }
 
-        // Invalid Login
         if (result.length === 0) {
 
             return res.status(401).json({
@@ -42,6 +56,15 @@ const login = (req, res) => {
         }
 
         const user = result[0];
+
+        const passwordMatches = await comparePassword(password, user.password);
+
+        if (!passwordMatches) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid Username or Password"
+            });
+        }
 
         // ----------------------------------
         // Check if account is blocked
@@ -64,6 +87,28 @@ const login = (req, res) => {
         // ----------------------------------
         // Record successful login
         // ----------------------------------
+
+        const jwtSecret = process.env.JWT_SECRET;
+        if (!jwtSecret) {
+            return res.status(500).json({
+                success: false,
+                message: "Authentication is not configured."
+            });
+        }
+
+        const token = jwt.sign({}, jwtSecret, {
+            algorithm: "HS256",
+            subject: String(user.id),
+            expiresIn: "8h"
+        });
+
+        const safeUser = {
+            id: user.id,
+            username: user.username,
+            full_name: user.full_name,
+            email: user.email,
+            role: user.role
+        };
 
         const insertSql = `
             INSERT INTO login_activity
@@ -98,7 +143,8 @@ const login = (req, res) => {
                 return res.json({
                     success: true,
                     message: "Login Successful",
-                    user: user,
+                    token,
+                    user: safeUser,
                 });
             }
         );
@@ -206,18 +252,14 @@ const getLoginCount = (req, res) => {
 
 const changePassword = (req, res) => {
 
-    const {
-        admin_id,
-        current_password,
-        new_password
-    } = req.body;
+    const { current_password, new_password } = req.body;
+    const admin_id = req.admin.id;
 
     // ------------------------------------------
     // Check required fields
     // ------------------------------------------
 
     if (
-        !admin_id ||
         !current_password ||
         !new_password
     ) {
@@ -232,17 +274,12 @@ const changePassword = (req, res) => {
     // Check current password
     // ------------------------------------------
 
-    const checkSql = `
-        SELECT *
-        FROM administrators
-        WHERE id = ?
-        AND password = ?
-    `;
+    const checkSql = "SELECT password FROM administrators WHERE id = ? LIMIT 1";
 
     db.query(
         checkSql,
-        [admin_id, current_password],
-        (err, result) => {
+        [admin_id],
+        async (err, result) => {
 
             if (err) {
 
@@ -261,7 +298,7 @@ const changePassword = (req, res) => {
             // Current password is incorrect
             // ----------------------------------
 
-            if (result.length === 0) {
+            if (result.length === 0 || !(await comparePassword(current_password, result[0].password))) {
 
                 return res.status(401).json({
                     success: false,
@@ -279,9 +316,10 @@ const changePassword = (req, res) => {
                 WHERE id = ?
             `;
 
+            const hashedPassword = await bcrypt.hash(new_password, 12);
             db.query(
                 updateSql,
-                [new_password, admin_id],
+                [hashedPassword, admin_id],
                 (updateErr) => {
 
                     if (updateErr) {
@@ -312,7 +350,7 @@ const changePassword = (req, res) => {
 // Create Administrator Account
 // ==========================================
 
-const createAccount = (req, res) => {
+const createAccount = async (req, res) => {
 
     const {
         full_name,
@@ -406,6 +444,8 @@ const createAccount = (req, res) => {
         });
     }
 
+    const hashedPassword = await bcrypt.hash(password, 12);
+
     // ------------------------------------------
     // Check if username or email exists
     // ------------------------------------------
@@ -473,7 +513,7 @@ const createAccount = (req, res) => {
                     email.trim(),
                     role,
                     username.trim(),
-                    password,
+                    hashedPassword,
                     security_question.trim(),
                     security_answer.trim()
                 ],
@@ -708,7 +748,7 @@ const verifySecurityAnswer = (req, res) => {
 // Reset Password After Security Verification
 // ==========================================
 
-const resetForgottenPassword = (req, res) => {
+const resetForgottenPassword = async (req, res) => {
 
     const {
         admin_id,
@@ -753,9 +793,11 @@ const resetForgottenPassword = (req, res) => {
         WHERE id = ?
     `;
 
+    const hashedPassword = await bcrypt.hash(new_password, 12);
+
     db.query(
         sql,
-        [new_password, admin_id],
+        [hashedPassword, admin_id],
         (err, result) => {
 
             if (err) {
@@ -804,7 +846,7 @@ const resetForgottenPassword = (req, res) => {
 
 const getProfile = (req, res) => {
 
-    const { admin_id } = req.query;
+    const admin_id = req.admin.id;
 
     if (!admin_id) {
 
@@ -868,9 +910,7 @@ const getProfile = (req, res) => {
 
 const checkRole = (req, res, next) => {
 
-    const admin_id =
-        req.body.admin_id ||
-        req.query.admin_id;
+    const admin_id = req.admin.id;
 
     if (!admin_id) {
 
@@ -932,19 +972,18 @@ const checkRole = (req, res, next) => {
 const updateProfile = (req, res) => {
 
     const {
-        admin_id,
         username,
         full_name,
         email,
         current_password
     } = req.body;
+    const admin_id = req.admin.id;
 
     // ------------------------------------------
     // CHECK REQUIRED FIELDS
     // ------------------------------------------
 
     if (
-        !admin_id ||
         !username ||
         !full_name ||
         !email ||
@@ -962,17 +1001,16 @@ const updateProfile = (req, res) => {
     // ------------------------------------------
 
     const checkPasswordSql = `
-        SELECT id
+        SELECT id, password
         FROM administrators
         WHERE id = ?
-        AND password = ?
         LIMIT 1
     `;
 
     db.query(
         checkPasswordSql,
-        [admin_id, current_password],
-        (err, result) => {
+        [admin_id],
+        async (err, result) => {
 
             if (err) {
 
@@ -991,7 +1029,7 @@ const updateProfile = (req, res) => {
             // WRONG PASSWORD
             // ----------------------------------
 
-            if (result.length === 0) {
+            if (result.length === 0 || !(await comparePassword(current_password, result[0].password))) {
 
                 return res.status(401).json({
                     success: false,
@@ -1110,7 +1148,7 @@ const updateProfile = (req, res) => {
 
 const getAccounts = (req, res) => {
 
-    const admin_id = req.query.admin_id;
+    const admin_id = req.admin.id;
 
     console.log("===== GET ACCOUNTS REQUEST =====");
     console.log("admin_id:", admin_id);
@@ -1262,7 +1300,7 @@ const getAccounts = (req, res) => {
 const getAccountDetails = (req, res) => {
 
     const accountId = req.params.id;
-    const admin_id = req.query.admin_id;
+    const admin_id = req.admin.id;
 
     console.log("===== GET ACCOUNT DETAILS REQUEST =====");
     console.log("Requested account ID:", accountId);
@@ -1481,7 +1519,7 @@ const getAccountDetails = (req, res) => {
 const updateAccountStatus = (req, res) => {
 
     const accountId = req.params.id;
-    const admin_id = req.query.admin_id;
+    const admin_id = req.admin.id;
     const { login_allowed } = req.body;
 
     console.log("===== UPDATE ACCOUNT STATUS REQUEST =====");
@@ -1706,7 +1744,7 @@ const updateAccountStatus = (req, res) => {
 const deleteAccount = (req, res) => {
 
     const accountId = req.params.id;
-    const admin_id = req.query.admin_id;
+    const admin_id = req.admin.id;
 
     console.log("===== DELETE ACCOUNT REQUEST =====");
     console.log("Account ID:", accountId);

@@ -13,9 +13,7 @@ const getNotifications = (req, res) => {
     // GET LOGGED-IN ADMINISTRATOR
     // ====================================
 
-    const adminId =
-        req.headers["admin-id"] ||
-        req.query.admin_id;
+    const adminId = req.admin.id;
 
 
     // ====================================
@@ -168,9 +166,7 @@ const markAsRead = (req, res) => {
     // GET LOGGED-IN ADMINISTRATOR
     // ====================================
 
-    const adminId =
-        req.headers["admin-id"] ||
-        req.body.admin_id;
+    const adminId = req.admin.id;
 
 
     // ====================================
@@ -304,9 +300,7 @@ const deleteNotification = (req, res) => {
     // GET ADMIN ID
     // ====================================
 
-    const adminId =
-        req.body.admin_id ||
-        req.headers["admin-id"];
+    const adminId = req.admin.id;
 
     console.log("===== DELETE NOTIFICATION REQUEST =====");
     console.log("Notification ID:", id);

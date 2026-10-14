@@ -8,6 +8,7 @@ import {
 } from "react";
 
 import "../styles/Playback.css";
+import { fetchProtectedFile } from "../utils/auth";
 
 // ==========================================
 // BACKEND CONFIGURATION
@@ -68,20 +69,6 @@ function getVideoUrl(video) {
     );
 }
 
-function getImageUrl(video) {
-    if (!video) return "";
-
-    if (video.imageUrl) {
-        return buildFileUrl(video.imageUrl);
-    }
-
-    if (!video.image_name) return "";
-
-    return buildFileUrl(
-        `/snapshots/${encodeURIComponent(video.image_name)}`
-    );
-}
-
 // ==========================================
 // PLAYBACK COMPONENT
 // ==========================================
@@ -119,6 +106,7 @@ function Playback({ currentUser, authToken }) {
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] =
         useState(null);
+    const [mediaUrls, setMediaUrls] = useState({});
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -250,6 +238,35 @@ function Playback({ currentUser, authToken }) {
             }
         };
     }, [loadVideos]);
+
+    useEffect(() => {
+        let active = true;
+        const createdUrls = [];
+        const files = new Set(
+            videos.map(video => video.image_name).filter(Boolean)
+        );
+        if (selectedVideo?.video_name) files.add(selectedVideo.video_name);
+
+        Promise.all(Array.from(files).map(async name => {
+            const isVideo = name === selectedVideo?.video_name;
+            const fileUrl = `${BACKEND_URL}/${isVideo ? "videos" : "snapshots"}/${encodeURIComponent(name)}`;
+            try {
+                const objectUrl = await fetchProtectedFile(fileUrl);
+                createdUrls.push(objectUrl);
+                return [name, objectUrl];
+            } catch (error) {
+                console.error("Protected media load failed:", error);
+                return [name, ""];
+            }
+        })).then(entries => {
+            if (active) setMediaUrls(Object.fromEntries(entries));
+        });
+
+        return () => {
+            active = false;
+            createdUrls.forEach(URL.revokeObjectURL);
+        };
+    }, [videos, selectedVideo]);
 
     // ========================================
     // SELECT RECORDING
@@ -399,9 +416,8 @@ function Playback({ currentUser, authToken }) {
     // SELECTED VIDEO DETAILS
     // ========================================
 
-    const selectedVideoUrl = getVideoUrl(selectedVideo);
-
-    const selectedImageUrl = getImageUrl(selectedVideo);
+    const selectedVideoUrl = mediaUrls[selectedVideo?.video_name] || "";
+    const selectedImageUrl = mediaUrls[selectedVideo?.image_name] || "";
 
     const isManualRecording =
         selectedVideo?.recording_type === "manual";
@@ -811,7 +827,7 @@ function Playback({ currentUser, authToken }) {
 
                 {videos.map(video => {
 
-                    const imageUrl = getImageUrl(video);
+                    const imageUrl = mediaUrls[video.image_name] || "";
 
                     const isSelected =
                         String(selectedVideo?.id) === String(video.id);

@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const { requireAuth, requireHOD } = require("../middleware/authMiddleware");
 
 
 // ==========================================
@@ -23,6 +24,7 @@ const {
 
 router.get(
     "/",
+    requireAuth,
     getDetectionSchedule
 );
 
@@ -33,6 +35,8 @@ router.get(
 
 router.put(
     "/:id",
+    requireAuth,
+    requireHOD,
     updateDetectionSchedule
 );
 
@@ -43,6 +47,7 @@ router.put(
 
 router.get(
     "/camera/:camera_id",
+    requireAuth,
     getCameraDetectionStatus
 );
 
@@ -53,6 +58,8 @@ router.get(
 
 router.put(
     "/camera/:camera_id",
+    requireAuth,
+    requireHOD,
     updateCameraDetectionStatus
 );
 

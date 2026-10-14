@@ -1,0 +1,1113 @@
+/* =========================================================
+   ACCOUNT DETAILS PAGE
+   SAME DESIGN STYLE AS ACCOUNTS / DETECTION SCHEDULE
+   ========================================================= */
+
+.account-details-page {
+    min-height: 100vh;
+    background: #f5f7fb;
+    color: #071225;
+    padding: 30px 36px 60px;
+    box-sizing: border-box;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.account-details-top-bar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 105px;
+    margin-bottom: 30px;
+}
+
+/* =========================================================
+   PAGE TITLE
+   ========================================================= */
+
+.account-details-top-bar h1 {
+    margin: 0;
+    font-size: 40px;
+    line-height: 1.2;
+    text-align: center;
+    color: #071225;
+    font-weight: 600;
+}
+
+/* =========================================================
+   PAGE DESCRIPTION
+   ========================================================= */
+
+.account-details-top-bar p {
+    margin: 8px 0 0;
+    color: #4b5563;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.account-details-back-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 20px;
+    background: #ffffff;
+    color: #071225;
+    border-radius: 10px;
+    border: none;
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: 0.25s ease;
+    cursor: pointer;
+}
+
+.account-details-back-button:hover {
+    background: #071225;
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.account-details-message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    color: #071225;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.account-details-message svg {
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+.account-details-message.success {
+    color: #166534;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.account-details-message.error {
+    color: #991b1b;
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+/* =========================================================
+   PROFILE / ACCOUNT HEADER CARD
+   ========================================================= */
+
+.account-details-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #ffffff;
+    color: #071225;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 22px;
+    border: none;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.account-details-profile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 68px;
+    height: 68px;
+    background: #f8fafc;
+    color: #071225;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 27px;
+}
+
+.account-details-profile-information {
+    flex: 1;
+    min-width: 0;
+}
+
+.account-details-profile-information h2 {
+    margin: 0 0 5px;
+    color: #071225;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.account-details-profile-information p {
+    margin: 0 0 10px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.account-details-role {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 11px;
+    background: #f8fafc;
+    color: #071225;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.account-details-role svg {
+    font-size: 11px;
+}
+
+/* =========================================================
+   ROLE TYPES
+   ========================================================= */
+
+.account-details-role.hod {
+    background: #f8fafc;
+    color: #071225;
+    border-color: #d1d5db;
+}
+
+.account-details-role.lecturer {
+    background: #f8fafc;
+    color: #071225;
+    border-color: #d1d5db;
+}
+
+.account-details-role.student {
+    background: #f8fafc;
+    color: #071225;
+    border-color: #d1d5db;
+}
+
+/* =========================================================
+   ACCOUNT STATUS
+   ========================================================= */
+
+.account-details-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 13px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.account-details-status.allowed {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+.account-details-status.blocked {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.account-details-status svg {
+    font-size: 13px;
+}
+
+/* =========================================================
+   GENERAL CARD
+   ========================================================= */
+
+.account-details-card {
+    background: #ffffff;
+    color: #071225;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 22px;
+    border: none;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.account-details-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 24px;
+}
+
+.account-details-card-header h2 {
+    margin: 0 0 8px;
+    color: #071225;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.account-details-card-header p {
+    margin: 0;
+    color: #4b5563;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   ACCOUNT INFORMATION GRID
+   ========================================================= */
+
+.account-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+/* =========================================================
+   ACCOUNT INFORMATION ITEM
+   ========================================================= */
+
+.account-details-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    background: #f8fafc;
+    color: #111827;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #eef0f3;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.account-details-item:hover {
+    background: #f9fafb;
+    border-color: #e5e7eb;
+}
+
+/* =========================================================
+   ITEM ICON
+   ========================================================= */
+
+.account-details-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    background: #ffffff;
+    color: #071225;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* =========================================================
+   ITEM TEXT
+   ========================================================= */
+
+.account-details-item > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.account-details-item > div:last-child span {
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.account-details-item > div:last-child strong {
+    color: #071225;
+    font-size: 14px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   LOGIN PERMISSION
+   ========================================================= */
+
+.account-details-permission {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: #f8fafc;
+    border: 1px solid #eef0f3;
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.account-details-permission-information {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.account-details-permission-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    font-size: 28px;
+}
+
+.account-details-permission-icon.allowed {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.account-details-permission-icon.blocked {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.account-details-permission-information strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #071225;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.account-details-permission-information p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   PERMISSION BUTTON
+   ========================================================= */
+
+.account-details-permission-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 105px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+}
+
+.account-details-permission-button.allowed {
+    background: #071225;
+    color: #ffffff;
+}
+
+.account-details-permission-button.allowed:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+}
+
+.account-details-permission-button.blocked {
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.account-details-permission-button.blocked:hover {
+    background: #15803d;
+    transform: translateY(-1px);
+}
+
+.account-details-permission-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* =========================================================
+   DELETE / DANGER CARD
+   ========================================================= */
+
+.account-details-danger-card {
+    margin-bottom: 0;
+}
+
+.account-details-delete-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: #f8fafc;
+    border: 1px solid #eef0f3;
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.account-details-delete-section strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #071225;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.account-details-delete-section p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   DELETE BUTTON
+   DARK RED
+   ========================================================= */
+
+.account-details-delete-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 145px;
+    padding: 11px 18px;
+    background: #991b1b;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+}
+
+.account-details-delete-button:hover {
+    background: #7f1d1d;
+    transform: translateY(-1px);
+    box-shadow:
+        0 5px 12px rgba(127, 29, 29, 0.25);
+}
+
+.account-details-delete-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.account-details-loading {
+    background: #ffffff;
+    color: #071225;
+    border: none;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 400;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .account-details-page {
+        padding: 25px;
+    }
+
+    .account-details-top-bar h1 {
+        font-size: 36px;
+    }
+
+    .account-details-card,
+    .account-details-profile-card {
+        padding: 22px;
+    }
+
+    .account-details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .account-details-page {
+        padding: 20px;
+    }
+
+    /* =====================================================
+       TOP BAR
+       ===================================================== */
+
+    .account-details-top-bar {
+        position: relative;
+        min-height: 110px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-top: 55px;
+    }
+
+    .account-details-top-bar h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .account-details-top-bar p {
+        font-size: 14px;
+    }
+
+    /* =====================================================
+       BACK BUTTON
+       ===================================================== */
+
+    .account-details-back-button {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 9px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    /* =====================================================
+       PROFILE CARD
+       ===================================================== */
+
+    .account-details-profile-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .account-details-profile-information {
+        width: 100%;
+    }
+
+    .account-details-profile-information h2 {
+        font-size: 22px;
+    }
+
+    .account-details-status {
+        align-self: flex-start;
+    }
+
+    /* =====================================================
+       CARD
+       ===================================================== */
+
+    .account-details-card {
+        padding: 20px;
+    }
+
+    /* =====================================================
+       CARD HEADER
+       ===================================================== */
+
+    .account-details-card-header {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .account-details-card-header h2 {
+        font-size: 20px;
+    }
+
+    .account-details-card-header p {
+        font-size: 14px;
+    }
+
+    /* =====================================================
+       INFORMATION
+       ===================================================== */
+
+    .account-details-item {
+        padding: 14px;
+    }
+
+    .account-details-item > div:last-child strong {
+        font-size: 13px;
+    }
+
+    /* =====================================================
+       PERMISSION
+       ===================================================== */
+
+    .account-details-permission {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .account-details-permission-button {
+        width: 100%;
+    }
+
+    /* =====================================================
+       DELETE
+       ===================================================== */
+
+    .account-details-delete-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .account-details-delete-button {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .account-details-page {
+        padding: 15px;
+    }
+
+    .account-details-top-bar {
+        min-height: 100px;
+        padding-top: 50px;
+    }
+
+    .account-details-top-bar h1 {
+        font-size: 27px;
+    }
+
+    .account-details-top-bar p {
+        font-size: 13px;
+    }
+
+    .account-details-back-button {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+
+    .account-details-profile-card {
+        padding: 17px;
+        border-radius: 10px;
+    }
+
+    .account-details-profile-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+
+    .account-details-profile-information h2 {
+        font-size: 20px;
+    }
+
+    .account-details-card {
+        padding: 17px;
+        border-radius: 10px;
+    }
+
+    .account-details-card-header h2 {
+        font-size: 18px;
+    }
+
+    .account-details-card-header p {
+        font-size: 13px;
+    }
+
+    .account-details-item {
+        gap: 11px;
+        padding: 13px;
+    }
+
+    .account-details-item-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+    }
+
+    .account-details-item > div:last-child span {
+        font-size: 11px;
+    }
+
+    .account-details-item > div:last-child strong {
+        font-size: 12px;
+    }
+
+    .account-details-permission-information strong {
+        font-size: 14px;
+    }
+
+    .account-details-permission-information p {
+        font-size: 12px;
+    }
+
+    .account-details-delete-section strong {
+        font-size: 14px;
+    }
+
+    .account-details-delete-section p {
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
+   DARK MODE
+   ACTIVATED FROM SETTINGS
+   ========================================================= */
+
+.account-details-page.dark {
+    background: #0f172a;
+    color: #f8fafc;
+}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-top-bar h1 {
+    color: #f8fafc;
+}
+
+.account-details-page.dark
+.account-details-top-bar p {
+    color: #cbd5e1;
+}
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-back-button {
+    background: #1e293b;
+    color: #f8fafc;
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.30);
+}
+
+.account-details-page.dark
+.account-details-back-button:hover {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-message {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: #334155;
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.account-details-page.dark
+.account-details-message.success {
+    background: #14532d;
+    color: #bbf7d0;
+    border-color: #166534;
+}
+
+.account-details-page.dark
+.account-details-message.error {
+    background: #450a0a;
+    color: #fecaca;
+    border-color: #7f1d1d;
+}
+
+/* =========================================================
+   PROFILE CARD
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-profile-card {
+    background: #1e293b;
+    color: #f8fafc;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+}
+
+.account-details-page.dark
+.account-details-profile-icon {
+    background: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+.account-details-page.dark
+.account-details-profile-information h2 {
+    color: #f8fafc;
+}
+
+.account-details-page.dark
+.account-details-profile-information p {
+    color: #cbd5e1;
+}
+
+/* =========================================================
+   ROLE
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-role {
+    background: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+.account-details-page.dark
+.account-details-role.hod {
+    background: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+.account-details-page.dark
+.account-details-role.lecturer {
+    background: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+.account-details-page.dark
+.account-details-role.student {
+    background: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-status.allowed {
+    background: #14532d;
+    color: #4ade80;
+    border-color: #166534;
+}
+
+.account-details-page.dark
+.account-details-status.blocked {
+    background: #450a0a;
+    color: #f87171;
+    border-color: #7f1d1d;
+}
+
+/* =========================================================
+   GENERAL CARD
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-card {
+    background: #1e293b;
+    color: #f8fafc;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+}
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-card-header h2 {
+    color: #f8fafc;
+}
+
+.account-details-page.dark
+.account-details-card-header p {
+    color: #cbd5e1;
+}
+
+/* =========================================================
+   INFORMATION ITEM
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-item {
+    background: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+.account-details-page.dark
+.account-details-item:hover {
+    background: #3b4a60;
+    border-color: #64748b;
+}
+
+.account-details-page.dark
+.account-details-item-icon {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+.account-details-page.dark
+.account-details-item > div:last-child span {
+    color: #94a3b8;
+}
+
+.account-details-page.dark
+.account-details-item > div:last-child strong {
+    color: #f8fafc;
+}
+
+/* =========================================================
+   LOGIN PERMISSION
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-permission {
+    background: #334155;
+    border-color: #475569;
+}
+
+.account-details-page.dark
+.account-details-permission-information strong {
+    color: #f8fafc;
+}
+
+.account-details-page.dark
+.account-details-permission-information p {
+    color: #cbd5e1;
+}
+
+.account-details-page.dark
+.account-details-permission-icon.allowed {
+    background: #14532d;
+    color: #4ade80;
+}
+
+.account-details-page.dark
+.account-details-permission-icon.blocked {
+    background: #450a0a;
+    color: #f87171;
+}
+
+/* =========================================================
+   DELETE SECTION
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-delete-section {
+    background: #334155;
+    border-color: #475569;
+}
+
+.account-details-page.dark
+.account-details-delete-section strong {
+    color: #f8fafc;
+}
+
+.account-details-page.dark
+.account-details-delete-section p {
+    color: #cbd5e1;
+}
+
+/* =========================================================
+   DARK MODE DELETE BUTTON
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-delete-button {
+    background: #991b1b;
+    color: #ffffff;
+}
+
+.account-details-page.dark
+.account-details-delete-button:hover {
+    background: #7f1d1d;
+    box-shadow:
+        0 5px 12px rgba(127, 29, 29, 0.35);
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.account-details-page.dark
+.account-details-loading {
+    background: #1e293b;
+    color: #f8fafc;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+}

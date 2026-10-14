@@ -3,6 +3,9 @@ const router = express.Router();
 
 const db = require("../config/db");
 const webpush = require("../config/webPush");
+const { requireAuth, requireHOD } = require("../middleware/authMiddleware");
+
+router.use(requireAuth);
 
 // =====================================================
 // SAVE PUSH SUBSCRIPTION
@@ -10,7 +13,6 @@ const webpush = require("../config/webPush");
 
 router.post("/subscribe", (req, res) => {
     const {
-        admin_id,
         endpoint,
         keys,
         device_name
@@ -37,7 +39,7 @@ router.post("/subscribe", (req, res) => {
     // -------------------------------------------------
 
     const checkSql = `
-        SELECT id
+        SELECT id, admin_id
         FROM push_subscriptions
         WHERE endpoint = ?
         LIMIT 1
@@ -68,6 +70,16 @@ router.post("/subscribe", (req, res) => {
 
             if (results.length > 0) {
 
+                if (
+                    results[0].admin_id &&
+                    String(results[0].admin_id) !== String(req.admin.id)
+                ) {
+                    return res.status(403).json({
+                        success: false,
+                        message: "This push subscription belongs to another administrator."
+                    });
+                }
+
                 const updateSql = `
                     UPDATE push_subscriptions
                     SET
@@ -82,7 +94,7 @@ router.post("/subscribe", (req, res) => {
                 db.query(
                     updateSql,
                     [
-                        admin_id || null,
+                        req.admin.id,
                         keys.p256dh,
                         keys.auth,
                         device_name || "Unknown Device",
@@ -134,7 +146,7 @@ router.post("/subscribe", (req, res) => {
             db.query(
                 insertSql,
                 [
-                    admin_id || null,
+                    req.admin.id,
                     endpoint,
                     keys.p256dh,
                     keys.auth,
@@ -185,12 +197,12 @@ router.delete("/unsubscribe", (req, res) => {
 
     const sql = `
         DELETE FROM push_subscriptions
-        WHERE endpoint = ?
+        WHERE endpoint = ? AND admin_id = ?
     `;
 
     db.query(
         sql,
-        [endpoint],
+        [endpoint, req.admin.id],
         (error) => {
 
             if (error) {
@@ -220,7 +232,7 @@ router.delete("/unsubscribe", (req, res) => {
 // TEST PUSH NOTIFICATION
 // =====================================================
 
-router.post("/test", async (req, res) => {
+router.post("/test", requireHOD, async (req, res) => {
 
     try {
 
@@ -391,7 +403,7 @@ router.post("/test", async (req, res) => {
 //
 // =====================================================
 
-router.post("/send", async (req, res) => {
+router.post("/send", requireHOD, async (req, res) => {
 
     try {
 

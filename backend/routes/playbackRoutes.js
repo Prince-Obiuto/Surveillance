@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const { requireAuth } = require("../middleware/authMiddleware");
 
 const {
     getPlaybackVideos
@@ -9,6 +10,6 @@ const {
 // ======================================
 // Get Playback Videos
 // ======================================
-router.get("/", getPlaybackVideos);
+router.get("/", requireAuth, getPlaybackVideos);
 
 module.exports = router;

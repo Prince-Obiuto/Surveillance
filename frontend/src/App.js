@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 
 import Login from "./pages/Login";
@@ -16,6 +16,11 @@ import ChangePassword from "./pages/ChangePassword";
 import DetectionSchedule from "./pages/DetectionSchedule";
 import Accounts from "./pages/Accounts";
 import AccountDetails from "./pages/AccountDetails";
+import { hasActiveSession } from "./utils/auth";
+
+function AuthGuard() {
+    return hasActiveSession() ? <Outlet /> : <Navigate to="/" replace />;
+}
 
 function App() {
 
@@ -35,6 +40,8 @@ function App() {
                         path="/"
                         element={<Login />}
                     />
+
+                    <Route element={<AuthGuard />}>
 
 
                     {/* ==============================
@@ -175,6 +182,8 @@ function App() {
                         path="/human-detections"
                         element={<HumanDetections />}
                     />
+
+                    </Route>
 
                 </Routes>
 

@@ -1,0 +1,66 @@
+services:
+  database:
+    image: mysql:8.4
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+    volumes:
+      - surveillance_mysql:/var/lib/mysql
+
+    networks:
+      - surveillance_network
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - "MYSQL_PWD=$$MYSQL_PASSWORD mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --silent"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DB_HOST: database
+      DB_PORT: 3306
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be configured}
+
+    ports:
+      - "127.0.0.1:5001:5000"
+
+    volumes:
+      - surveillance_videos:/app/videos
+      - surveillance_snapshots:/app/snapshots
+
+    depends_on:
+      database:
+        condition: service_healthy
+
+    networks:
+      - surveillance_network
+
+volumes:
+  surveillance_mysql:
+  surveillance_videos:
+  surveillance_snapshots:
+
+networks:
+  surveillance_network:
+    driver: bridge
+

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import { AUTH_TOKEN_KEY } from "../utils/auth";
 
 function Login() {
 
@@ -46,14 +47,11 @@ function Login() {
             // SUCCESSFUL LOGIN
             // ==================================
 
-            if (data.success) {
+            if (data.success && data.token) {
+
+                sessionStorage.setItem(AUTH_TOKEN_KEY, data.token);
 
                 // Save Login Session
-                localStorage.setItem(
-                    "isLoggedIn",
-                    "true"
-                );
-
                 // Save Logged-in User
                 localStorage.setItem(
                     "user",
@@ -180,11 +178,7 @@ function Login() {
 
 
                         <div className="forgot">
-
-                            <Link to="/forgot-password">
-                                Forgot Password?
-                            </Link>
-
+                            <span>Password recovery is unavailable. Contact the HOD.</span>
                         </div>
 
                     </div>

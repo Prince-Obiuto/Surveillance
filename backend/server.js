@@ -4,6 +4,8 @@ const path = require("path");
 require("dotenv").config();
 
 const db = require("./config/db");
+const rateLimit = require("express-rate-limit");
+const { requireAuth } = require("./middleware/authMiddleware");
 
 // ======================================
 // ROUTES
@@ -19,6 +21,26 @@ const detectionScheduleRoutes =
     require("./routes/detectionScheduleRoutes");
 
 const app = express();
+const loginLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 5,
+    standardHeaders: "draft-8",
+    legacyHeaders: false,
+    message: {
+        success: false,
+        message: "Too many login attempts. Please try again in 15 minutes."
+    }
+});
+
+const trustedProxyHops = Number.parseInt(
+    process.env.TRUST_PROXY_HOPS || "0",
+    10
+);
+if (Number.isInteger(trustedProxyHops) && trustedProxyHops > 0) {
+    app.set("trust proxy", trustedProxyHops);
+}
+
+app.disable("x-powered-by");
 
 // ======================================
 // MIDDLEWARE
@@ -28,12 +50,24 @@ app.use(cors());
 
 app.use(express.json());
 
+app.use((err, req, res, next) => {
+    if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
+        return res.status(400).json({
+            success: false,
+            message: "Request body must contain valid JSON.",
+        });
+    }
+
+    return next(err);
+});
+
 // ======================================
 // STATIC VIDEO FILES
 // ======================================
 
 app.use(
     "/videos",
+    requireAuth,
     express.static(
         path.join(__dirname, "videos")
     )
@@ -45,6 +79,7 @@ app.use(
 
 app.use(
     "/snapshots",
+    requireAuth,
     express.static(
         path.join(__dirname, "snapshots")
     )
@@ -60,6 +95,12 @@ app.use(
 
 app.use(
     "/api/auth",
+    (req, res, next) => {
+        if (req.method === "POST" && req.path === "/login") {
+            return loginLimiter(req, res, next);
+        }
+        return next();
+    },
     authRoutes
 );
 
@@ -133,9 +174,8 @@ app.get("/api/health", (req, res) => {
     res.json({
         status: "OK",
         server: "Running",
-        database: "Connected"
+        database: db.state === "connected" ? "Connected" : "Unavailable"
     });
-
 });
 
 
@@ -146,7 +186,7 @@ app.get("/api/health", (req, res) => {
 const PORT =
     process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+if (require.main === module) app.listen(PORT, () => {
 
     console.log(
         "======================================"
@@ -181,3 +221,5 @@ app.listen(PORT, () => {
     );
 
 });
+
+module.exports = app;

@@ -3,6 +3,10 @@ const express = require("express");
 const router = express.Router();
 
 const authController = require("../controllers/authController");
+const {
+    requireAuth,
+    requireHOD
+} = require("../middleware/authMiddleware");
 
 // ==========================================
 // LOGIN
@@ -19,6 +23,7 @@ router.post(
 
 router.get(
     "/profile",
+    requireAuth,
     authController.getProfile
 );
 
@@ -28,6 +33,8 @@ router.get(
 
 router.post(
     "/create-account",
+    requireAuth,
+    requireHOD,
     authController.createAccount
 );
 
@@ -37,6 +44,8 @@ router.post(
 
 router.get(
     "/login-activities",
+    requireAuth,
+    requireHOD,
     authController.getLoginActivities
 );
 
@@ -46,6 +55,7 @@ router.get(
 
 router.get(
     "/last-login",
+    requireAuth,
     authController.getLastLogin
 );
 
@@ -55,6 +65,7 @@ router.get(
 
 router.get(
     "/login-count",
+    requireAuth,
     authController.getLoginCount
 );
 
@@ -64,6 +75,7 @@ router.get(
 
 router.put(
     "/change-password",
+    requireAuth,
     authController.changePassword
 );
 
@@ -73,37 +85,8 @@ router.put(
 
 router.put(
     "/update-profile",
+    requireAuth,
     authController.updateProfile
-);
-
-// ==========================================
-// FORGOT PASSWORD
-// STEP 1
-// ==========================================
-
-router.post(
-    "/verify-forgot-password",
-    authController.verifyForgotPassword
-);
-
-// ==========================================
-// FORGOT PASSWORD
-// STEP 2
-// ==========================================
-
-router.post(
-    "/verify-security-answer",
-    authController.verifySecurityAnswer
-);
-
-// ==========================================
-// FORGOT PASSWORD
-// STEP 3
-// ==========================================
-
-router.put(
-    "/reset-forgotten-password",
-    authController.resetForgottenPassword
 );
 
 // ==========================================
@@ -113,17 +96,30 @@ router.put(
 
 router.get(
     "/accounts",
+    requireAuth,
+    requireHOD,
     authController.getAccounts
 );
 
 router.get(
     "/accounts/:id",
+    requireAuth,
+    requireHOD,
     authController.getAccountDetails
 );
 
 router.put(
     "/accounts/:id/status",
+    requireAuth,
+    requireHOD,
     authController.updateAccountStatus
+);
+
+router.delete(
+    "/accounts/:id",
+    requireAuth,
+    requireHOD,
+    authController.deleteAccount
 );
 
 // ==========================================

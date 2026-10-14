@@ -1,11 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { canDelete } from "../utils/permissions";
 import "../styles/HumanDetections.css";
+import { fetchProtectedFile } from "../utils/auth";
 
 function HumanDetection() {
     const [detections, setDetections] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [imageUrls, setImageUrls] = useState({});
+    const imageUrlCache = useRef(new Map());
 
     // Selected image for full-screen overlay
     const [selectedIndex, setSelectedIndex] = useState(null);
@@ -86,19 +89,40 @@ const response = await fetch(
 
     }, []);
 
+    useEffect(() => {
+        let active = true;
+        const missingImages = detections.filter(detection =>
+            detection.image_name && !imageUrlCache.current.has(detection.id)
+        );
+        const cachedEntries = detections
+            .filter(detection => imageUrlCache.current.has(detection.id))
+            .map(detection => [detection.id, imageUrlCache.current.get(detection.id)]);
 
-    // ==========================================
-    // Get Image URL
-    // ==========================================
+        Promise.all(missingImages.map(async detection => {
+            if (!detection.image_name) return [detection.id, ""];
+            try {
+                const url = await fetchProtectedFile(
+                    `http://localhost:5000/snapshots/${encodeURIComponent(detection.image_name)}`
+                );
+                imageUrlCache.current.set(detection.id, url);
+                return [detection.id, url];
+            } catch (error) {
+                console.error("Protected snapshot load failed:", error);
+                return [detection.id, ""];
+            }
+        })).then(entries => {
+            if (active) setImageUrls(previous => ({
+                ...previous,
+                ...Object.fromEntries([...cachedEntries, ...entries])
+            }));
+        });
 
-    const getImageUrl = (imageName) => {
+        return () => { active = false; };
+    }, [detections]);
 
-        if (!imageName) {
-            return "";
-        }
-
-        return `http://localhost:5000/snapshots/${imageName}`;
-    };
+    useEffect(() => () => {
+        imageUrlCache.current.forEach(URL.revokeObjectURL);
+    }, []);
 
 
     // ==========================================
@@ -557,9 +581,7 @@ useEffect(() => {
                                 {detection.image_name && (
 
                                     <img
-                                        src={getImageUrl(
-                                            detection.image_name
-                                        )}
+                                        src={imageUrls[detection.id] || ""}
                                         alt="Human Detection"
                                         className="detection-image"
                                         onClick={() =>
@@ -726,9 +748,7 @@ useEffect(() => {
                         ========================== */}
 
                         <img
-                            src={getImageUrl(
-                                selectedDetection.image_name
-                            )}
+                            src={imageUrls[selectedDetection.id] || ""}
                             alt="Human Detection"
                             className="full-image"
                         />
@@ -819,9 +839,7 @@ useEffect(() => {
                             ========================== */}
 
                             <a
-                                href={getImageUrl(
-                                    selectedDetection.image_name
-                                )}
+                                href={imageUrls[selectedDetection.id] || "#"}
                                 download={
                                     selectedDetection.image_name
                                 }

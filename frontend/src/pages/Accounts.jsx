@@ -19,6 +19,7 @@ import {
 } from "react-icons/fa";
 
 import "../styles/Accounts.css";
+import { hasActiveSession } from "../utils/auth";
 
 
 // =====================================================
@@ -109,11 +110,7 @@ function Accounts() {
 
     useEffect(() => {
 
-        const loggedIn =
-            localStorage.getItem("isLoggedIn");
-
-
-        if (!loggedIn) {
+        if (!hasActiveSession()) {
 
             window.location.href = "/";
 

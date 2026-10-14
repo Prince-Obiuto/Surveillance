@@ -1,137 +1,80 @@
+const jwt = require("jsonwebtoken");
 const db = require("../config/db");
 
-// ==========================================
-// AUTHENTICATION MIDDLEWARE
-// ==========================================
-
 const requireAuth = (req, res, next) => {
+    const authHeader = req.get("authorization") || "";
+    const match = authHeader.match(/^Bearer\s+([^\s]+)$/i);
+    const secret = process.env.JWT_SECRET;
 
-    // --------------------------------------
-    // Get admin ID from request
-    // --------------------------------------
-
-    const adminId =
-        req.headers["admin-id"] ||
-        req.body.admin_id;
-
-
-    // --------------------------------------
-    // Check if admin ID exists
-    // --------------------------------------
-
-    if (!adminId) {
-
+    if (!match || !secret) {
         return res.status(401).json({
             success: false,
             message: "Authentication required."
         });
-
     }
 
+    let payload;
+    try {
+        payload = jwt.verify(match[1], secret, {
+            algorithms: ["HS256"]
+        });
+    } catch (_error) {
+        return res.status(401).json({
+            success: false,
+            message: "Invalid or expired authentication token."
+        });
+    }
 
-    // --------------------------------------
-    // Find administrator
-    // --------------------------------------
-
-    const sql = `
-        SELECT
-            id,
-            username,
-            full_name,
-            email,
-            role
-        FROM administrators
-        WHERE id = ?
-        LIMIT 1
-    `;
-
+    const adminId = payload && payload.sub;
+    if (!adminId) {
+        return res.status(401).json({
+            success: false,
+            message: "Invalid authentication token."
+        });
+    }
 
     db.query(
-        sql,
+        `SELECT id, username, full_name, email, role, login_allowed
+         FROM administrators WHERE id = ? LIMIT 1`,
         [adminId],
-        (err, results) => {
-
+        (err, rows) => {
             if (err) {
-
-                console.error(
-                    "Authentication error:",
-                    err
-                );
-
+                console.error("Authentication lookup error:", err);
                 return res.status(500).json({
                     success: false,
-                    message: err.message
+                    message: "Unable to verify administrator."
                 });
-
             }
 
-
-            // ----------------------------------
-            // Administrator not found
-            // ----------------------------------
-
-            if (results.length === 0) {
-
+            if (!rows.length || Number(rows[0].login_allowed) !== 1) {
                 return res.status(401).json({
                     success: false,
-                    message: "Invalid administrator."
+                    message: "Administrator account is unavailable."
                 });
-
             }
 
-
-            // ----------------------------------
-            // Save administrator in request
-            // ----------------------------------
-
-            req.admin = results[0];
-
-
-            // ----------------------------------
-            // Continue
-            // ----------------------------------
-
-            next();
-
+            req.admin = rows[0];
+            return next();
         }
     );
-
 };
 
-
-// ==========================================
-// HOD ONLY
-// ==========================================
-
 const requireHOD = (req, res, next) => {
-
     if (!req.admin) {
-
         return res.status(401).json({
             success: false,
             message: "Authentication required."
         });
-
     }
-
 
     if (req.admin.role !== "HOD") {
-
         return res.status(403).json({
             success: false,
-            message:
-                "Access denied. Only HOD can perform this action."
+            message: "Access denied. Only HOD can perform this action."
         });
-
     }
 
-
-    next();
-
+    return next();
 };
 
-
-module.exports = {
-    requireAuth,
-    requireHOD
-};
+module.exports = { requireAuth, requireHOD };

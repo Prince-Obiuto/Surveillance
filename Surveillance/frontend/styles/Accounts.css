@@ -1,0 +1,1858 @@
+/* =========================================================
+   ACCOUNTS PAGE
+   SAME DESIGN STYLE AS DETECTION SCHEDULE
+   ========================================================= */
+
+.accounts-page {
+
+    min-height: 100vh;
+
+    background: #f5f7fb;
+
+    color: #071225;
+
+    padding: 30px 36px 60px;
+
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.accounts-top-bar {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 105px;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================================================
+   PAGE TITLE
+   ========================================================= */
+
+.accounts-top-bar h1 {
+
+    margin: 0;
+
+    font-size: 40px;
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    color: #071225;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   PAGE DESCRIPTION
+   ========================================================= */
+
+.accounts-top-bar p {
+
+    margin: 8px 0 0;
+
+    color: #4b5563;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   SAME STYLE AS DETECTION SCHEDULE
+   ========================================================= */
+
+.accounts-back-button {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 11px 20px;
+
+    background: #ffffff;
+
+    color: #071225;
+
+    border-radius: 10px;
+
+    border: none;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.08);
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition: 0.25s ease;
+
+    cursor: pointer;
+
+}
+
+
+.accounts-back-button:hover {
+
+    background: #071225;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================================
+   REFRESH BUTTON
+   ========================================================= */
+
+.accounts-refresh-button {
+
+    position: absolute;
+
+    right: 0;
+
+    top: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 44px;
+
+    padding: 10px 18px;
+
+    background: #ffffff;
+
+    color: #071225;
+
+    border: none;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.08);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.accounts-refresh-button:hover {
+
+    background: #071225;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 14px rgba(0, 0, 0, 0.12);
+
+}
+
+
+.accounts-refresh-button:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+.accounts-refresh-icon {
+
+    font-size: 14px;
+
+}
+
+
+.accounts-refresh-icon.spinning {
+
+    animation:
+        accounts-spin 0.8s linear infinite;
+
+}
+
+
+@keyframes accounts-spin {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   HOD / INFORMATION MESSAGE
+   ========================================================= */
+
+.accounts-message {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background: #ffffff;
+
+    color: #071225;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    padding: 14px 18px;
+
+    margin-bottom: 22px;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.05);
+
+}
+
+
+.accounts-message svg {
+
+    flex-shrink: 0;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   ACCOUNT SUMMARY CARD
+   ========================================================= */
+
+.accounts-summary-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background: #ffffff;
+
+    color: #071225;
+
+    border-radius: 12px;
+
+    padding: 24px 28px;
+
+    margin-bottom: 22px;
+
+    border: none;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.accounts-summary-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 52px;
+
+    height: 52px;
+
+    background: #f8fafc;
+
+    color: #071225;
+
+    border:
+        1px solid #eef0f3;
+
+    border-radius: 10px;
+
+    font-size: 21px;
+
+}
+
+
+.accounts-summary-information {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+
+.accounts-summary-information span {
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+}
+
+
+.accounts-summary-information strong {
+
+    color: #071225;
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    line-height: 1.2;
+
+}
+
+
+/* =========================================================
+   MAIN ACCOUNTS CARD
+   SAME STYLE AS CAMERA DETECTION CARD
+   ========================================================= */
+
+.accounts-card {
+
+    background: #ffffff;
+
+    color: #071225;
+
+    border-radius: 12px;
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+
+    border: none;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+/* =========================================================
+   ACCOUNTS SECTION HEADER
+   ========================================================= */
+
+.accounts-section-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.accounts-section-header h2 {
+
+    margin: 0 0 8px;
+
+    color: #071225;
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+}
+
+
+.accounts-section-header p {
+
+    margin: 0;
+
+    color: #4b5563;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+
+}
+
+
+.accounts-count {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 8px 15px;
+
+    background: #071225;
+
+    color: #ffffff;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   ACCOUNTS LIST
+   ========================================================= */
+
+.accounts-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   ACCOUNT ROW
+   ========================================================= */
+
+.account-row {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 1.4fr)
+        minmax(150px, 1fr)
+        minmax(180px, 1.3fr)
+        minmax(110px, 0.7fr)
+        minmax(100px, 0.7fr)
+        minmax(130px, 0.8fr);
+
+    align-items: center;
+
+    gap: 18px;
+
+    min-height: 82px;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+}
+
+
+.account-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+/* =========================================================
+   ACCOUNT INFORMATION
+   ========================================================= */
+
+.account-information {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-width: 0;
+
+    background: #f8fafc;
+
+    color: #111827;
+
+    border-radius: 8px;
+
+    padding: 13px 15px;
+
+    border:
+        1px solid #eef0f3;
+
+    box-shadow: none;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+
+.account-information:hover {
+
+    background: #f9fafb;
+
+    border-color: #e5e7eb;
+
+}
+
+
+.account-avatar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 40px;
+
+    height: 40px;
+
+    background: #ffffff;
+
+    color: #071225;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+}
+
+
+.account-information h3 {
+
+    margin: 0 0 4px;
+
+    color: #071225;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+.account-information span {
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+}
+
+
+/* =========================================================
+   ACCOUNT DETAIL
+   ========================================================= */
+
+.account-detail {
+
+    min-width: 0;
+
+}
+
+
+.account-detail-label {
+
+    display: none;
+
+    margin-bottom: 5px;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.account-detail-value {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-width: 0;
+
+    color: #111827;
+
+    font-size: 14px;
+
+}
+
+
+.account-detail-value svg {
+
+    flex-shrink: 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+}
+
+
+.account-detail-value span {
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   ROLE BADGE
+   ========================================================= */
+
+.account-role {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 7px 11px;
+
+    background: #f8fafc;
+
+    color: #071225;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+
+.account-role svg {
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   HOD ROLE
+   ========================================================= */
+
+.account-role.hod {
+
+    background: #f8fafc;
+
+    color: #071225;
+
+    border-color: #d1d5db;
+
+}
+
+
+/* =========================================================
+   LECTURER ROLE
+   ========================================================= */
+
+.account-role.lecturer {
+
+    background: #f8fafc;
+
+    color: #071225;
+
+    border-color: #d1d5db;
+
+}
+
+
+/* =========================================================
+   STUDENT ROLE
+   ========================================================= */
+
+.account-role.student {
+
+    background: #f8fafc;
+
+    color: #071225;
+
+    border-color: #d1d5db;
+
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.account-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+
+.account-status.active {
+
+    color: #16a34a;
+
+}
+
+
+.account-status svg {
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.account-date {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.account-date span {
+
+    color: #071225;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+}
+
+
+.account-date small {
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.accounts-empty {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 220px;
+
+    text-align: center;
+
+    padding: 30px;
+
+}
+
+
+.accounts-empty > svg {
+
+    color: #9ca3af;
+
+    font-size: 38px;
+
+    margin-bottom: 14px;
+
+}
+
+
+.accounts-empty h3 {
+
+    margin: 0 0 8px;
+
+    color: #071225;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+}
+
+
+.accounts-empty p {
+
+    margin: 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.accounts-loading {
+
+    background: #ffffff;
+
+    color: #071225;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    font-weight: 400;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .account-row {
+
+        grid-template-columns:
+            minmax(180px, 1.3fr)
+            minmax(140px, 1fr)
+            minmax(160px, 1.2fr)
+            minmax(100px, 0.7fr)
+            minmax(90px, 0.7fr)
+            minmax(120px, 0.8fr);
+
+        gap: 12px;
+
+    }
+
+
+    .account-detail-value {
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .accounts-page {
+
+        padding: 25px;
+
+    }
+
+
+    .accounts-top-bar h1 {
+
+        font-size: 36px;
+
+    }
+
+
+    .accounts-card,
+    .accounts-summary-card {
+
+        padding: 22px;
+
+    }
+
+
+    .account-row {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 15px;
+
+        padding: 18px 0;
+
+    }
+
+
+    .account-information {
+
+        grid-column: 1 / -1;
+
+    }
+
+
+    .account-detail-label {
+
+        display: block;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .accounts-page {
+
+        padding: 20px;
+
+    }
+
+
+    /* =====================================================
+       TOP BAR
+       ===================================================== */
+
+    .accounts-top-bar {
+
+        position: relative;
+
+        min-height: 110px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        margin-bottom: 25px;
+
+        padding-top: 55px;
+
+    }
+
+
+    .accounts-top-bar h1 {
+
+        font-size: 30px;
+
+        text-align: center;
+
+    }
+
+
+    .accounts-top-bar p {
+
+        font-size: 14px;
+
+    }
+
+
+    /* =====================================================
+       BACK BUTTON
+       ===================================================== */
+
+    .accounts-back-button {
+
+        position: absolute;
+
+        left: 0;
+
+        top: 0;
+
+        padding: 9px 16px;
+
+        border-radius: 8px;
+
+        font-size: 14px;
+
+    }
+
+
+    /* =====================================================
+       REFRESH BUTTON
+       ===================================================== */
+
+    .accounts-refresh-button {
+
+        right: 0;
+
+        top: 0;
+
+        min-height: 40px;
+
+        padding: 8px 12px;
+
+        border-radius: 8px;
+
+        font-size: 13px;
+
+    }
+
+
+    .accounts-refresh-button span {
+
+        display: none;
+
+    }
+
+
+    /* =====================================================
+       MESSAGE
+       ===================================================== */
+
+    .accounts-message {
+
+        padding: 12px 15px;
+
+        font-size: 14px;
+
+    }
+
+
+    /* =====================================================
+       SUMMARY
+       ===================================================== */
+
+    .accounts-summary-card {
+
+        padding: 20px;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .accounts-summary-icon {
+
+        width: 46px;
+
+        height: 46px;
+
+    }
+
+
+    .accounts-summary-information strong {
+
+        font-size: 25px;
+
+    }
+
+
+    /* =====================================================
+       ACCOUNTS CARD
+       ===================================================== */
+
+    .accounts-card {
+
+        padding: 20px;
+
+    }
+
+
+    /* =====================================================
+       SECTION HEADER
+       ===================================================== */
+
+    .accounts-section-header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .accounts-section-header h2 {
+
+        font-size: 20px;
+
+    }
+
+
+    .accounts-section-header p {
+
+        font-size: 14px;
+
+    }
+
+
+    .accounts-count {
+
+        align-self: flex-start;
+
+    }
+
+
+    /* =====================================================
+       ACCOUNT ROW
+       ===================================================== */
+
+    .account-row {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 14px;
+
+        min-height: auto;
+
+        padding: 16px 0;
+
+    }
+
+
+    /* =====================================================
+       ACCOUNT INFORMATION
+       ===================================================== */
+
+    .account-information {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 14px;
+
+    }
+
+
+    .account-information h3 {
+
+        font-size: 16px;
+
+    }
+
+
+    /* =====================================================
+       DETAILS
+       ===================================================== */
+
+    .account-detail {
+
+        width: 100%;
+
+    }
+
+
+    .account-detail-label {
+
+        display: block;
+
+    }
+
+
+    .account-detail-value {
+
+        font-size: 14px;
+
+        padding: 8px 0;
+
+    }
+
+
+    /* =====================================================
+       DATE
+       ===================================================== */
+
+    .account-date {
+
+        padding: 5px 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .accounts-page {
+
+        padding: 15px;
+
+    }
+
+
+    .accounts-top-bar {
+
+        min-height: 100px;
+
+        padding-top: 50px;
+
+    }
+
+
+    .accounts-top-bar h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .accounts-top-bar p {
+
+        font-size: 13px;
+
+    }
+
+
+    .accounts-back-button {
+
+        font-size: 13px;
+
+        padding: 8px 14px;
+
+    }
+
+
+    .accounts-refresh-button {
+
+        padding: 8px 10px;
+
+    }
+
+
+    .accounts-card,
+    .accounts-summary-card {
+
+        padding: 17px;
+
+        border-radius: 10px;
+
+    }
+
+
+    .accounts-section-header h2 {
+
+        font-size: 18px;
+
+    }
+
+
+    .accounts-section-header p {
+
+        font-size: 13px;
+
+    }
+
+
+    .accounts-summary-information strong {
+
+        font-size: 23px;
+
+    }
+
+
+    .account-information {
+
+        padding: 13px;
+
+    }
+
+
+    .account-information h3 {
+
+        font-size: 15px;
+
+    }
+
+
+    .account-information span {
+
+        font-size: 11px;
+
+    }
+
+
+    .account-detail-value {
+
+        font-size: 13px;
+
+    }
+
+
+    .account-role {
+
+        font-size: 12px;
+
+        padding: 6px 10px;
+
+    }
+
+
+    .account-status {
+
+        font-size: 12px;
+
+    }
+
+
+    .account-date span {
+
+        font-size: 12px;
+
+    }
+
+
+    .account-date small {
+
+        font-size: 11px;
+
+    }
+
+}
+
+
+/* =========================================================
+   DARK MODE
+   ACTIVATED FROM SETTINGS
+   ========================================================= */
+
+.accounts-page.dark {
+
+    background: #0f172a;
+
+    color: #f8fafc;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.accounts-page.dark .accounts-top-bar h1 {
+
+    color: #f8fafc;
+
+}
+
+
+.accounts-page.dark .accounts-top-bar p {
+
+    color: #cbd5e1;
+
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.accounts-page.dark .accounts-back-button {
+
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.30);
+
+}
+
+
+.accounts-page.dark .accounts-back-button:hover {
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   REFRESH BUTTON
+   ========================================================= */
+
+.accounts-page.dark .accounts-refresh-button {
+
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.30);
+
+}
+
+
+.accounts-page.dark .accounts-refresh-button:hover {
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.accounts-page.dark .accounts-message {
+
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    border-color: #334155;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.25);
+
+}
+
+
+/* =========================================================
+   SUMMARY CARD
+   ========================================================= */
+
+.accounts-page.dark .accounts-summary-card {
+
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+
+}
+
+
+.accounts-page.dark .accounts-summary-icon {
+
+    background: #334155;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+
+}
+
+
+.accounts-page.dark .accounts-summary-information span {
+
+    color: #cbd5e1;
+
+}
+
+
+.accounts-page.dark .accounts-summary-information strong {
+
+    color: #f8fafc;
+
+}
+
+
+/* =========================================================
+   MAIN ACCOUNTS CARD
+   ========================================================= */
+
+.accounts-page.dark .accounts-card {
+
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.accounts-page.dark .accounts-section-header h2 {
+
+    color: #f8fafc;
+
+}
+
+
+.accounts-page.dark .accounts-section-header p {
+
+    color: #cbd5e1;
+
+}
+
+
+/* =========================================================
+   ACCOUNT COUNT
+   ========================================================= */
+
+.accounts-page.dark .accounts-count {
+
+    background: #020617;
+
+    color: #f8fafc;
+
+}
+
+
+/* =========================================================
+   ACCOUNT ROW
+   ========================================================= */
+
+.accounts-page.dark .account-row {
+
+    border-bottom-color: #334155;
+
+}
+
+
+/* =========================================================
+   ACCOUNT INFORMATION
+   ========================================================= */
+
+.accounts-page.dark .account-information {
+
+    background: #334155;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+
+}
+
+
+.accounts-page.dark .account-information:hover {
+
+    background: #3b4a60;
+
+    border-color: #64748b;
+
+}
+
+
+.accounts-page.dark .account-information h3 {
+
+    color: #f8fafc;
+
+}
+
+
+.accounts-page.dark .account-information span {
+
+    color: #cbd5e1;
+
+}
+
+
+/* =========================================================
+   ACCOUNT AVATAR
+   ========================================================= */
+
+.accounts-page.dark .account-avatar {
+
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+
+}
+
+
+/* =========================================================
+   ACCOUNT DETAIL
+   ========================================================= */
+
+.accounts-page.dark .account-detail-label {
+
+    color: #94a3b8;
+
+}
+
+
+.accounts-page.dark .account-detail-value {
+
+    color: #f8fafc;
+
+}
+
+
+.accounts-page.dark .account-detail-value svg {
+
+    color: #94a3b8;
+
+}
+
+
+/* =========================================================
+   ROLE
+   ========================================================= */
+
+.accounts-page.dark .account-role {
+
+    background: #334155;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+
+}
+
+
+.accounts-page.dark .account-role.hod {
+
+    background: #334155;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+
+}
+
+
+.accounts-page.dark .account-role.lecturer {
+
+    background: #334155;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+
+}
+
+
+.accounts-page.dark .account-role.student {
+
+    background: #334155;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.accounts-page.dark .account-status.active {
+
+    color: #4ade80;
+
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.accounts-page.dark .account-date span {
+
+    color: #f8fafc;
+
+}
+
+
+.accounts-page.dark .account-date small {
+
+    color: #94a3b8;
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.accounts-page.dark .accounts-empty > svg {
+
+    color: #64748b;
+
+}
+
+
+.accounts-page.dark .accounts-empty h3 {
+
+    color: #f8fafc;
+
+}
+
+
+.accounts-page.dark .accounts-empty p {
+
+    color: #94a3b8;
+
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.accounts-page.dark .accounts-loading {
+
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+
+}

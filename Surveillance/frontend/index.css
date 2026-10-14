@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* =======================================================
+   GLOBAL DARK MODE
+======================================================= */
+
+body.dark{
+    background:#0f172a;
+    color:#f8fafc;
+}
+
+/* Pages */
+
+body.dark .dashboard,
+body.dark .notifications-page,
+body.dark .login-activity-page,
+body.dark .camera-view,
+body.dark .camera-view-page,
+body.dark .settings-page,
+body.dark .login-container,
+body.dark .login-page{
+    background:#0f172a !important;
+    color:#f8fafc;
+}
+
+/* Sidebar */
+
+body.dark .sidebar{
+    background:#020617 !important;
+}
+
+body.dark .sidebar h2,
+body.dark .sidebar li,
+body.dark .sidebar a{
+    color:white !important;
+}
+
+body.dark .sidebar li:hover,
+body.dark .sidebar a:hover{
+    color:#38bdf8 !important;
+}
+
+/* Cards */
+
+body.dark .card,
+body.dark .camera-card,
+body.dark .summary-card,
+body.dark .notification-card,
+body.dark .settings-card{
+    background:#1e293b !important;
+    color:white !important;
+}
+
+/* Inputs */
+
+body.dark input,
+body.dark textarea,
+body.dark select{
+    background:#334155 !important;
+    color:white !important;
+    border:1px solid #475569 !important;
+}
+
+body.dark input::placeholder{
+    color:#cbd5e1;
+}
+
+/* Tables */
+
+body.dark table{
+    background:#1e293b;
+    color:white;
+}
+
+body.dark th{
+    background:#334155;
+    color:white;
+}
+
+body.dark td{
+    color:white;
+}
+
+/* Buttons */
+
+body.dark button{
+    color:white;
+}
+
+body.dark .save-btn{
+    background:#2563eb;
+}
+
+body.dark .reset-btn{
+    background:#dc2626;
+}
+
+/* Camera Screen */
+
+body.dark .camera-screen{
+    background:#000;
+    color:#ef4444;
+}
+
+/* Text */
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark p,
+body.dark span,
+body.dark label,
+body.dark strong{
+    color:white;
+}
+
+body.dark .camera-details p,
+body.dark .middle p{
+    color:#e5e7eb;
+}
+
+/* Search Box */
+
+body.dark .search-box{
+    background:#334155;
+    color:white;
+    border:1px solid #475569;
+}
+
+/* Back Button */
+
+body.dark .back-btn{
+    background:#1e293b;
+    color:white;
+}
+
+body.dark .back-btn:hover{
+    background:#2563eb;
+}
+
+/* Camera Buttons */
+
+body.dark .camera-buttons button{
+    background:#2563eb;
+}
+
+body.dark .camera-buttons button:hover{
+    background:#1d4ed8;
+}

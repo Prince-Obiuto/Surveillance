@@ -14,7 +14,7 @@ const API_URL = "http://localhost:5000";
 // =====================================================
 
 const VAPID_PUBLIC_KEY =
-    "BJpwUKEt7Tk9z06vBo9VWSzk4RvQ-AmI2OOwoSCQk9loHqOcpoxhAhQlvIFl5XBVI75zcWPbX_Sn-J2IFIVu44M";
+    process.env.REACT_APP_VAPID_PUBLIC_KEY;
 
 // =====================================================
 // CONVERT BASE64 PUBLIC KEY

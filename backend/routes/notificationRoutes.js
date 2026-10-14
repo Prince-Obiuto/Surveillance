@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const { requireAuth, requireHOD } = require("../middleware/authMiddleware");
 
 const {
     getNotifications,
@@ -15,6 +16,7 @@ const {
 
 router.get(
     "/",
+    requireAuth,
     getNotifications
 );
 
@@ -25,6 +27,7 @@ router.get(
 
 router.put(
     "/:id/read",
+    requireAuth,
     markAsRead
 );
 
@@ -35,6 +38,8 @@ router.put(
 
 router.delete(
     "/:id",
+    requireAuth,
+    requireHOD,
     deleteNotification
 );
 

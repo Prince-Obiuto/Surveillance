@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const { requireAuth, requireHOD } = require("../middleware/authMiddleware");
 
 const db = require("../config/db");
 
@@ -9,7 +10,7 @@ const db = require("../config/db");
 // GET GENERAL DETECTION SCHEDULE
 // =====================================================
 
-router.get("/", (req, res) => {
+router.get("/", requireAuth, (req, res) => {
 
     const sql = `
         SELECT
@@ -84,7 +85,7 @@ router.get("/", (req, res) => {
 // UPDATE GENERAL DETECTION SCHEDULE
 // =====================================================
 
-router.put("/", (req, res) => {
+router.put("/", requireAuth, requireHOD, (req, res) => {
 
     const {
         start_time,

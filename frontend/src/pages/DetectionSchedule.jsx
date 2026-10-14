@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
 import "../styles/DetectionSchedule.css";
+import { hasActiveSession } from "../utils/auth";
 
 
 // =====================================================
@@ -102,11 +103,7 @@ function DetectionSchedule() {
 
     useEffect(() => {
 
-        const loggedIn =
-            localStorage.getItem("isLoggedIn");
-
-
-        if (!loggedIn) {
+        if (!hasActiveSession()) {
 
             window.location.href = "/";
 

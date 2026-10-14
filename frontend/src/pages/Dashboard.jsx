@@ -28,6 +28,7 @@ import {
 
 import "../styles/Dashboard.css";
 import cameras from "../data/cameras";
+import { hasActiveSession, clearSession } from "../utils/auth";
 
 // ==========================================
 // BACKEND CONFIGURATION
@@ -74,9 +75,7 @@ function Dashboard() {
 
     useEffect(() => {
 
-        const loggedIn = localStorage.getItem("isLoggedIn");
-
-        if (!loggedIn) {
+        if (!hasActiveSession()) {
             navigate("/");
             return;
         }
@@ -354,7 +353,7 @@ function Dashboard() {
 
     useEffect(() => {
 
-        if (!localStorage.getItem("isLoggedIn")) {
+        if (!hasActiveSession()) {
             navigate("/");
             return;
         }
@@ -508,6 +507,8 @@ function Dashboard() {
     // ==========================================
 
     const handleLogout = () => {
+
+        clearSession();
 
         const confirmed = window.confirm(
             "Are you sure you want to logout?"
