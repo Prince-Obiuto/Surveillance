@@ -1,0 +1,510 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   LOGIN CONTAINER
+========================================================= */
+
+.login-container {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #0f172a;
+
+    padding: 20px;
+}
+
+
+/* =========================================================
+   LOGIN BOX
+========================================================= */
+
+.login-box {
+    width: 100%;
+
+    max-width: 430px;
+
+    background: #ffffff;
+
+    padding: 35px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.20);
+
+    color: #111827;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.login-box h1 {
+    text-align: center;
+
+    font-size: 28px;
+
+    color: #111827;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.login-box > p {
+    text-align: center;
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.login-box form > input {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-bottom: 15px;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #111827;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+
+.login-box form > input:focus {
+    border-color: #071225;
+
+    box-shadow:
+        0 0 5px rgba(7, 18, 37, 0.25);
+}
+
+
+.login-box form > input::placeholder {
+    color: #9ca3af;
+}
+
+
+/* =========================================================
+   LOGIN OPTIONS
+   Remember Me
+   Forgot Password
+========================================================= */
+
+.options {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 2px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   REMEMBER ME
+========================================================= */
+
+.remember {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 8px;
+
+    width: 100%;
+}
+
+
+.remember input[type="checkbox"] {
+    width: 17px;
+
+    height: 17px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    accent-color: #071225;
+}
+
+
+.remember label {
+    font-size: 14px;
+
+    color: #374151;
+
+    cursor: pointer;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+.forgot {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: center;
+}
+
+
+.forgot a {
+    color: #071225;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    transition: 0.25s ease;
+}
+
+
+.forgot a:hover {
+    color: #0d1b32;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.error-message {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    margin-bottom: 18px;
+
+    border-radius: 7px;
+
+    background: #fef2f2;
+
+    color: #991b1b;
+
+    border:
+        1px solid #fecaca;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   CREATE ACCOUNT
+   SAME LEFT POSITION AS REMEMBER ME
+========================================================= */
+
+.create-account-link {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+
+    color: #6b7280;
+
+    text-align: left;
+}
+
+
+.create-account-link span {
+    color: #6b7280;
+}
+
+
+.create-account-link a {
+    color: #071225;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+.create-account-link a:hover {
+    color: #0d1b32;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+.login-box button {
+    width: 100%;
+
+    min-height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 11px 20px;
+
+    border-radius: 5px;
+
+    border:
+        1px solid #263754;
+
+    background: #071225;
+
+    color: #f8fafc;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.login-box button:hover {
+    background: #0d1b32;
+
+    border-color: #071225;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 12px rgba(7, 18, 37, 0.25);
+}
+
+
+.login-box button:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+
+.login-box button:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   REMOVE UNWANTED UNDERLINES
+========================================================= */
+
+.create-account-link a,
+.create-account-link a:hover,
+.create-account-link a:focus,
+.create-account-link a:active,
+.create-account-link a:visited {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .login-container {
+        padding: 20px;
+    }
+
+
+    .login-box {
+        max-width: 100%;
+
+        padding: 25px;
+
+        border-radius: 10px;
+    }
+
+
+    .login-box h1 {
+        font-size: 24px;
+    }
+
+
+    .login-box > p {
+        font-size: 14px;
+
+        margin-bottom: 25px;
+    }
+
+
+    .login-box form > input {
+        font-size: 14px;
+
+        padding: 12px;
+    }
+
+
+    .remember label,
+    .forgot a,
+    .create-account-link {
+        font-size: 13px;
+    }
+
+
+    .create-account-link {
+        gap: 4px;
+
+        flex-wrap: wrap;
+    }
+
+
+    .login-box button {
+        min-height: 42px;
+
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .login-container {
+        padding: 15px;
+    }
+
+
+    .login-box {
+        padding: 20px;
+    }
+
+
+    .login-box h1 {
+        font-size: 22px;
+    }
+
+
+    .login-box > p {
+        font-size: 13px;
+
+        margin-bottom: 22px;
+    }
+
+
+    .login-box form > input {
+        padding: 11px;
+
+        font-size: 13px;
+    }
+
+
+    .options {
+        gap: 11px;
+
+        margin-bottom: 17px;
+    }
+
+
+    .remember label,
+    .forgot a,
+    .create-account-link {
+        font-size: 12px;
+    }
+
+
+    .create-account-link {
+        gap: 4px;
+    }
+
+
+    .login-box button {
+        font-size: 14px;
+
+        padding: 11px;
+    }
+}

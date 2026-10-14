@@ -1,0 +1,1417 @@
+/* =========================================================
+   DETECTION SCHEDULE PAGE
+   ========================================================= */
+
+.detection-schedule-page {
+    min-height: 100vh;
+
+    background: #f5f7fb;
+
+    color: #071225;
+
+    padding: 30px 36px 60px;
+
+    box-sizing: border-box;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.schedule-top-bar {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 105px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   PAGE TITLE
+   ========================================================= */
+
+.schedule-top-bar h1 {
+    margin: 0;
+
+    font-size: 40px;
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    color: #071225;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   PAGE DESCRIPTION
+   ========================================================= */
+
+.schedule-top-bar p {
+    margin: 8px 0 0;
+
+    color: #4b5563;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   SAME STYLE AS SETTINGS PAGE
+   ========================================================= */
+
+.schedule-back-button {
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 11px 20px;
+
+    background: #ffffff;
+
+    color: #071225;
+
+    border-radius: 10px;
+
+    border: none;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.08);
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition: 0.25s ease;
+
+    cursor: pointer;
+}
+
+
+.schedule-back-button:hover {
+    background: #071225;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   GENERAL DETECTION SCHEDULE CARD
+   ========================================================= */
+
+.general-schedule-card {
+    background: #ffffff;
+
+    color: #071225;
+
+    border-radius: 12px;
+
+    padding: 28px;
+
+    margin-bottom: 22px;
+
+    border: none;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   GENERAL SCHEDULE HEADER
+   ========================================================= */
+
+.general-schedule-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+.general-schedule-header h2 {
+    margin: 0 0 10px;
+
+    color: #071225;
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+
+.general-schedule-header p {
+    margin: 0;
+
+    max-width: 900px;
+
+    color: #4b5563;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ACTIVE TIME BADGE
+   ========================================================= */
+
+.active-time-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 8px 15px;
+
+    background: #071225;
+
+    color: #ffffff;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   GENERAL SCHEDULE CONTROLS
+   ========================================================= */
+
+.general-schedule-controls {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   TIME FIELD
+   ========================================================= */
+
+.time-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.time-field label {
+    color: #071225;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.time-field input {
+    width: 172px;
+
+    height: 48px;
+
+    padding: 0 13px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    color: #111827;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    outline: none;
+
+    transition: 0.25s ease;
+}
+
+
+.time-field input:hover {
+    border-color: #9ca3af;
+}
+
+
+.time-field input:focus {
+    border-color: #071225;
+
+    box-shadow:
+        0 0 0 2px rgba(7, 18, 37, 0.08);
+}
+
+
+.time-field input::placeholder {
+    color: #9ca3af;
+}
+
+
+/* =========================================================
+   SAVE SCHEDULE BUTTON
+   ========================================================= */
+
+.save-schedule-button {
+    min-height: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 10px 28px;
+
+    border-radius: 5px;
+
+    border:
+        1px solid #071225;
+
+    background: #071225;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.save-schedule-button:hover {
+    background: #0d1b32;
+
+    border-color: #0d1b32;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 12px rgba(7, 18, 37, 0.18);
+}
+
+
+.save-schedule-button:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+
+.save-schedule-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   SUCCESS / INFORMATION MESSAGE
+   ========================================================= */
+
+.schedule-message {
+    background: #ffffff;
+
+    color: #071225;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    padding: 14px 18px;
+
+    margin-bottom: 22px;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================================================
+   CAMERA DETECTION CARD
+   MAIN SETTINGS-STYLE WHITE CARD
+   ========================================================= */
+
+.camera-detection-card {
+    background: #ffffff;
+
+    color: #071225;
+
+    border-radius: 12px;
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+
+    border: none;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   CAMERA SECTION HEADER
+   ========================================================= */
+
+.camera-section-header {
+    margin-bottom: 22px;
+}
+
+
+.camera-section-header h2 {
+    margin: 0 0 8px;
+
+    color: #071225;
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+
+.camera-section-header p {
+    margin: 0;
+
+    color: #4b5563;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CAMERA LIST
+   ========================================================= */
+
+.camera-list {
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   CAMERA ROW
+   ========================================================= */
+
+.camera-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    min-height: 82px;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid #e5e7eb;
+}
+
+
+.camera-row:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   CAMERA INFORMATION
+   ========================================================= */
+
+.camera-information {
+    flex: 1;
+
+    background: #f8fafc;
+
+    color: #111827;
+
+    border-radius: 8px;
+
+    padding: 16px 18px;
+
+    border:
+        1px solid #eef0f3;
+
+    box-shadow: none;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.camera-information:hover {
+    background: #f9fafb;
+
+    border-color: #e5e7eb;
+}
+
+
+.camera-information h3 {
+    margin: 0 0 5px;
+
+    color: #071225;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+.camera-information p {
+    margin: 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   CAMERA STATUS AREA
+   ========================================================= */
+
+.camera-status {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    min-width: 130px;
+}
+
+
+/* =========================================================
+   ON STATUS
+   ========================================================= */
+
+.status-on {
+    color: #16a34a;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   OFF STATUS
+   ========================================================= */
+
+.status-off {
+    color: #dc2626;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   CAMERA SWITCH
+   ========================================================= */
+
+.camera-switch {
+    position: relative;
+
+    width: 52px;
+
+    height: 30px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+.camera-switch:hover {
+    opacity: 0.9;
+}
+
+
+.camera-switch:focus {
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+
+/* =========================================================
+   SWITCH ON
+   ========================================================= */
+
+.switch-on {
+    background: #22c55e;
+}
+
+
+/* =========================================================
+   SWITCH OFF
+   ========================================================= */
+
+.switch-off {
+    background: #9ca3af;
+}
+
+
+/* =========================================================
+   SWITCH CIRCLE
+   ========================================================= */
+
+.camera-switch span {
+    position: absolute;
+
+    top: 4px;
+
+    width: 22px;
+
+    height: 22px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    transition:
+        left 0.25s ease,
+        right 0.25s ease;
+
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.20);
+}
+
+
+/* SWITCH ON CIRCLE */
+.switch-on span {
+    right: 4px;
+}
+
+
+/* SWITCH OFF CIRCLE */
+.switch-off span {
+    left: 4px;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.schedule-loading {
+    background: #ffffff;
+
+    color: #071225;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    font-weight: 400;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================================
+   TABLET RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .detection-schedule-page {
+        padding: 25px;
+    }
+
+
+    .schedule-top-bar h1 {
+        font-size: 36px;
+    }
+
+
+    .general-schedule-card,
+    .camera-detection-card {
+        padding: 22px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .detection-schedule-page {
+        padding: 20px;
+    }
+
+
+    /* TOP BAR */
+
+    .schedule-top-bar {
+        position: relative;
+
+        min-height: 110px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        margin-bottom: 25px;
+
+        padding-top: 55px;
+    }
+
+
+    .schedule-top-bar h1 {
+        font-size: 30px;
+
+        text-align: center;
+    }
+
+
+    .schedule-top-bar p {
+        font-size: 14px;
+    }
+
+
+    /* BACK BUTTON */
+
+    .schedule-back-button {
+        position: absolute;
+
+        left: 0;
+
+        top: 0;
+
+        padding: 9px 16px;
+
+        border-radius: 8px;
+
+        font-size: 14px;
+    }
+
+
+    /* GENERAL CARD */
+
+    .general-schedule-card {
+        padding: 20px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .general-schedule-header {
+        flex-direction: column;
+
+        gap: 15px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .general-schedule-header h2 {
+        font-size: 20px;
+    }
+
+
+    .general-schedule-header p {
+        font-size: 14px;
+    }
+
+
+    .active-time-badge {
+        align-self: flex-start;
+    }
+
+
+    /* GENERAL CONTROLS */
+
+    .general-schedule-controls {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 15px;
+    }
+
+
+    .time-field {
+        width: 100%;
+    }
+
+
+    .time-field input {
+        width: 100%;
+
+        height: 46px;
+    }
+
+
+    .save-schedule-button {
+        width: 100%;
+
+        height: 46px;
+    }
+
+
+    /* MESSAGE */
+
+    .schedule-message {
+        padding: 12px 15px;
+
+        font-size: 14px;
+    }
+
+
+    /* CAMERA CARD */
+
+    .camera-detection-card {
+        padding: 20px;
+    }
+
+
+    .camera-section-header h2 {
+        font-size: 20px;
+    }
+
+
+    .camera-section-header p {
+        font-size: 14px;
+    }
+
+
+    /* CAMERA ROW */
+
+    .camera-row {
+        min-height: 75px;
+
+        padding: 13px 0;
+
+        gap: 12px;
+    }
+
+
+    /* CAMERA INFORMATION */
+
+    .camera-information {
+        padding: 14px;
+    }
+
+
+    .camera-information h3 {
+        font-size: 16px;
+    }
+
+
+    .camera-information p {
+        font-size: 13px;
+    }
+
+
+    /* CAMERA STATUS */
+
+    .camera-status {
+        min-width: 90px;
+
+        gap: 8px;
+    }
+
+
+    .status-on,
+    .status-off {
+        font-size: 13px;
+    }
+
+
+    /* SWITCH */
+
+    .camera-switch {
+        width: 48px;
+
+        height: 28px;
+    }
+
+
+    .camera-switch span {
+        width: 20px;
+
+        height: 20px;
+
+        top: 4px;
+    }
+
+
+    .switch-on span {
+        right: 4px;
+    }
+
+
+    .switch-off span {
+        left: 4px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .detection-schedule-page {
+        padding: 15px;
+    }
+
+
+    .schedule-top-bar {
+        min-height: 100px;
+
+        padding-top: 50px;
+    }
+
+
+    .schedule-top-bar h1 {
+        font-size: 27px;
+    }
+
+
+    .schedule-top-bar p {
+        font-size: 13px;
+    }
+
+
+    .schedule-back-button {
+        font-size: 13px;
+
+        padding: 8px 14px;
+    }
+
+
+    .general-schedule-card,
+    .camera-detection-card {
+        padding: 17px;
+
+        border-radius: 10px;
+    }
+
+
+    .general-schedule-header h2,
+    .camera-section-header h2 {
+        font-size: 18px;
+    }
+
+
+    .general-schedule-header p,
+    .camera-section-header p {
+        font-size: 13px;
+    }
+
+
+    .camera-row {
+        padding: 12px 0;
+
+        gap: 8px;
+    }
+
+
+    .camera-information {
+        padding: 13px;
+    }
+
+
+    .camera-information h3 {
+        font-size: 15px;
+    }
+
+
+    .camera-information p {
+        font-size: 12px;
+    }
+
+
+    .camera-status {
+        min-width: 78px;
+
+        gap: 6px;
+    }
+
+
+    .status-on,
+    .status-off {
+        font-size: 12px;
+    }
+
+
+    .camera-switch {
+        width: 44px;
+
+        height: 26px;
+    }
+
+
+    .camera-switch span {
+        width: 18px;
+
+        height: 18px;
+
+        top: 4px;
+    }
+
+
+    .switch-on span {
+        right: 4px;
+    }
+
+
+    .switch-off span {
+        left: 4px;
+    }
+
+
+    .save-schedule-button {
+        font-size: 14px;
+    }
+}
+/* =========================================================
+   DARK MODE
+   ACTIVATED FROM SETTINGS
+   ========================================================= */
+
+.detection-schedule-page.dark {
+    background: #0f172a;
+
+    color: #f8fafc;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.detection-schedule-page.dark .schedule-top-bar h1 {
+    color: #f8fafc;
+}
+
+
+.detection-schedule-page.dark .schedule-top-bar p {
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.detection-schedule-page.dark .schedule-back-button {
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.30);
+}
+
+
+.detection-schedule-page.dark .schedule-back-button:hover {
+    background: #2563eb;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   GENERAL DETECTION SCHEDULE CARD
+   ========================================================= */
+
+.detection-schedule-page.dark .general-schedule-card {
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   GENERAL SCHEDULE HEADER
+   ========================================================= */
+
+.detection-schedule-page.dark .general-schedule-header h2 {
+    color: #f8fafc;
+}
+
+
+.detection-schedule-page.dark .general-schedule-header p {
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   ACTIVE TIME BADGE
+   ========================================================= */
+
+.detection-schedule-page.dark .active-time-badge {
+    background: #020617;
+
+    color: #f8fafc;
+}
+
+
+/* =========================================================
+   TIME FIELD
+   ========================================================= */
+
+.detection-schedule-page.dark .time-field label {
+    color: #f8fafc;
+}
+
+
+.detection-schedule-page.dark .time-field input {
+    background: #334155;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+}
+
+
+.detection-schedule-page.dark .time-field input:hover {
+    border-color: #64748b;
+}
+
+
+.detection-schedule-page.dark .time-field input:focus {
+    border-color: #60a5fa;
+
+    box-shadow:
+        0 0 0 2px rgba(96, 165, 250, 0.15);
+}
+
+
+.detection-schedule-page.dark .time-field input::placeholder {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   SAVE SCHEDULE BUTTON
+   ========================================================= */
+
+.detection-schedule-page.dark .save-schedule-button {
+    background: #020617;
+
+    color: #ffffff;
+
+    border-color: #020617;
+}
+
+
+.detection-schedule-page.dark .save-schedule-button:hover {
+    background: #2563eb;
+
+    border-color: #2563eb;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SUCCESS / INFORMATION MESSAGE
+   ========================================================= */
+
+.detection-schedule-page.dark .schedule-message {
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    border-color: #334155;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   CAMERA DETECTION CARD
+   ========================================================= */
+
+.detection-schedule-page.dark .camera-detection-card {
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   CAMERA SECTION HEADER
+   ========================================================= */
+
+.detection-schedule-page.dark .camera-section-header h2 {
+    color: #f8fafc;
+}
+
+
+.detection-schedule-page.dark .camera-section-header p {
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   CAMERA ROW
+   ========================================================= */
+
+.detection-schedule-page.dark .camera-row {
+    border-bottom-color: #334155;
+}
+
+
+/* =========================================================
+   CAMERA INFORMATION
+   ========================================================= */
+
+.detection-schedule-page.dark .camera-information {
+    background: #334155;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+}
+
+
+.detection-schedule-page.dark .camera-information:hover {
+    background: #3b4a60;
+
+    border-color: #64748b;
+}
+
+
+.detection-schedule-page.dark .camera-information h3 {
+    color: #f8fafc;
+}
+
+
+.detection-schedule-page.dark .camera-information p {
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   CAMERA STATUS
+   ========================================================= */
+
+.detection-schedule-page.dark .status-on {
+    color: #4ade80;
+}
+
+
+.detection-schedule-page.dark .status-off {
+    color: #f87171;
+}
+
+
+/* =========================================================
+   SWITCH
+   ========================================================= */
+
+.detection-schedule-page.dark .switch-off {
+    background: #64748b;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.detection-schedule-page.dark .schedule-loading {
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+}
+/* =========================================================
+   RETURN CAMERA TO GENERAL CONTROL BUTTON
+   ========================================================= */
+
+.reset-camera-button {
+    min-height: 30px;
+
+    padding: 6px 10px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    color: #071225;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.reset-camera-button:hover {
+    background: #071225;
+
+    color: #ffffff;
+
+    border-color: #071225;
+}
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+.detection-schedule-page.dark .reset-camera-button {
+    background: #334155;
+
+    color: #f8fafc;
+
+    border-color: #475569;
+}
+
+.detection-schedule-page.dark .reset-camera-button:hover {
+    background: #2563eb;
+
+    color: #ffffff;
+
+    border-color: #2563eb;
+}

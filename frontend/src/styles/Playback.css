@@ -1,0 +1,1217 @@
+/* =========================================================
+   PLAYBACK PAGE
+========================================================= */
+
+.playback-page {
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+
+    background: #ffffff !important;
+    color: #111827 !important;
+
+    padding: 30px;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.top-bar {
+    position: relative;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.top-bar h1 {
+    margin: 0;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    color: #111827 !important;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 48px;
+
+    box-sizing: border-box;
+
+    background: #111827 !important;
+    color: #ffffff !important;
+
+    text-decoration: none;
+
+    padding: 0 18px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background: #1e293b !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SEARCH PANEL
+========================================================= */
+
+.search-panel {
+    width: 100%;
+
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+.search-panel select {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 52px;
+
+    box-sizing: border-box;
+
+    background: #ffffff !important;
+    color: #111827 !important;
+
+    border: 1px solid #cbd5e1 !important;
+
+    border-radius: 8px;
+
+    padding: 0 16px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+.search-panel select:focus {
+    border-color: #111827 !important;
+}
+
+
+/* =========================================================
+   SEARCH BUTTON
+========================================================= */
+
+.search-panel button {
+    height: 52px;
+
+    min-width: 105px;
+
+    box-sizing: border-box;
+
+    background: #111827 !important;
+    color: #ffffff !important;
+
+    border: none !important;
+
+    border-radius: 8px;
+
+    padding: 0 25px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.search-panel button:hover {
+    background: #1e293b !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.playback-error {
+    background: #fef2f2 !important;
+
+    color: #991b1b !important;
+
+    padding: 15px 20px;
+
+    border-radius: 8px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #fecaca !important;
+}
+
+
+/* =========================================================
+   VIDEO CONTAINER
+========================================================= */
+
+.video-container {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background: #f8fafc !important;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    border: 1px solid #e2e8f0 !important;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.08);
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* =========================================================
+   MAIN VIDEO
+========================================================= */
+
+.main-video {
+    display: block;
+
+    width: 100%;
+
+    max-height: 600px;
+
+    border-radius: 12px;
+
+    background: #000000;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   VIDEO INFORMATION
+========================================================= */
+
+.video-container h2 {
+    margin-top: 20px;
+
+    margin-bottom: 10px;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    color: #111827 !important;
+}
+
+.video-container p {
+    margin-top: 8px;
+
+    color: #475569 !important;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   SNAPSHOT
+========================================================= */
+
+.snapshot-section {
+    margin-top: 25px;
+}
+
+.snapshot-section h3 {
+    margin-bottom: 12px;
+
+    color: #111827 !important;
+}
+
+.snapshot-preview {
+    display: block;
+
+    width: 320px;
+
+    max-width: 100%;
+
+    margin-top: 20px;
+
+    border-radius: 10px;
+
+    border: 2px solid #111827 !important;
+}
+
+
+/* =========================================================
+   PLAYBACK BUTTONS
+========================================================= */
+
+.playback-buttons {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 15px;
+
+    margin-top: 25px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   DOWNLOAD RECORDING
+========================================================= */
+
+.download-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 48px;
+
+    min-height: 48px;
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0 25px;
+
+    background: #111827 !important;
+    color: #ffffff !important;
+
+    border: none !important;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.download-btn:hover {
+    background: #1e293b !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FULL SCREEN
+========================================================= */
+
+.fullscreen-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 48px;
+
+    min-height: 48px;
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0 25px;
+
+    background: #111827 !important;
+    color: #ffffff !important;
+
+    border: none !important;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.fullscreen-btn:hover {
+    background: #1e293b !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   EMPTY PLAYBACK
+========================================================= */
+
+.empty-playback {
+    text-align: center;
+
+    padding: 70px 20px;
+}
+
+.empty-playback h2 {
+    margin-bottom: 10px;
+
+    color: #111827 !important;
+}
+
+.empty-playback p {
+    color: #64748b !important;
+}
+
+
+/* =========================================================
+   TOTAL RECORDINGS
+========================================================= */
+
+.total-recordings {
+    margin-top: 35px;
+
+    margin-bottom: 15px;
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+    color: #111827 !important;
+}
+
+
+/* =========================================================
+   RECORDING LIST
+========================================================= */
+
+.recording-list {
+    width: 100%;
+
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(280px, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   RECORD CARD
+========================================================= */
+
+.record-card {
+    background: #f8fafc !important;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    border: 2px solid #e2e8f0 !important;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.record-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #111827 !important;
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================================
+   ACTIVE RECORD CARD
+========================================================= */
+
+.record-card.active {
+    border: 3px solid #111827 !important;
+
+    box-shadow:
+        0 0 15px rgba(17, 24, 39, 0.20);
+}
+
+
+/* =========================================================
+   RECORD IMAGE
+========================================================= */
+
+.record-card img {
+    display: block;
+
+    width: 100%;
+
+    height: 180px;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   NO SNAPSHOT
+========================================================= */
+
+.no-snapshot {
+    width: 100%;
+
+    height: 180px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e2e8f0 !important;
+
+    color: #64748b !important;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   RECORD CARD CONTENT
+========================================================= */
+
+.record-card>div:not(.no-snapshot) {
+    padding: 15px;
+}
+
+.record-card h3 {
+    margin: 0;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #111827 !important;
+}
+
+.record-card p {
+    margin-top: 8px;
+
+    color: #475569 !important;
+
+    font-size: 14px;
+
+    word-break: break-word;
+}
+
+.recording-file {
+    color: #64748b !important;
+
+    word-break: break-all;
+}
+
+.video-file-name {
+    color: #64748b !important;
+
+    word-break: break-all;
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+
+/* =========================================================
+   DARK MODE - PAGE
+========================================================= */
+
+.dark-mode .playback-page,
+body.dark-mode .playback-page,
+html.dark-mode .playback-page,
+.playback-page.dark-mode {
+    background: #0f172a !important;
+
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   DARK MODE - TOP BAR
+========================================================= */
+
+.dark-mode .top-bar h1,
+body.dark-mode .top-bar h1,
+html.dark-mode .top-bar h1,
+.playback-page.dark-mode .top-bar h1 {
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   DARK MODE - BACK BUTTON
+========================================================= */
+
+.dark-mode .back-btn,
+body.dark-mode .back-btn,
+html.dark-mode .back-btn,
+.playback-page.dark-mode .back-btn {
+    background: #111827 !important;
+
+    color: #ffffff !important;
+}
+
+.dark-mode .back-btn:hover,
+body.dark-mode .back-btn:hover,
+html.dark-mode .back-btn:hover,
+.playback-page.dark-mode .back-btn:hover {
+    background: #1e293b !important;
+}
+
+
+/* =========================================================
+   DARK MODE - SEARCH SELECT
+========================================================= */
+
+.dark-mode .search-panel select,
+body.dark-mode .search-panel select,
+html.dark-mode .search-panel select,
+.playback-page.dark-mode .search-panel select {
+    background: #1e293b !important;
+
+    color: #f8fafc !important;
+
+    border-color: #334155 !important;
+}
+
+.dark-mode .search-panel select:focus,
+body.dark-mode .search-panel select:focus,
+html.dark-mode .search-panel select:focus,
+.playback-page.dark-mode .search-panel select:focus {
+    border-color: #111827 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - SEARCH BUTTON
+========================================================= */
+
+.dark-mode .search-panel button,
+body.dark-mode .search-panel button,
+html.dark-mode .search-panel button,
+.playback-page.dark-mode .search-panel button {
+    background: #111827 !important;
+
+    color: #ffffff !important;
+}
+
+.dark-mode .search-panel button:hover,
+body.dark-mode .search-panel button:hover,
+html.dark-mode .search-panel button:hover,
+.playback-page.dark-mode .search-panel button:hover {
+    background: #1e293b !important;
+}
+
+
+/* =========================================================
+   DARK MODE - ERROR
+========================================================= */
+
+.dark-mode .playback-error,
+body.dark-mode .playback-error,
+html.dark-mode .playback-error,
+.playback-page.dark-mode .playback-error {
+    background: #450a0a !important;
+
+    color: #fecaca !important;
+
+    border-color: #7f1d1d !important;
+}
+
+
+/* =========================================================
+   DARK MODE - VIDEO CONTAINER
+========================================================= */
+
+.dark-mode .video-container,
+body.dark-mode .video-container,
+html.dark-mode .video-container,
+.playback-page.dark-mode .video-container {
+    background: #111827 !important;
+
+    border-color: #1e293b !important;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   DARK MODE - VIDEO TEXT
+========================================================= */
+
+.dark-mode .video-container h2,
+body.dark-mode .video-container h2,
+html.dark-mode .video-container h2,
+.playback-page.dark-mode .video-container h2 {
+    color: #f8fafc !important;
+}
+
+.dark-mode .video-container p,
+body.dark-mode .video-container p,
+html.dark-mode .video-container p,
+.playback-page.dark-mode .video-container p {
+    color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - SNAPSHOT
+========================================================= */
+
+.dark-mode .snapshot-section h3,
+body.dark-mode .snapshot-section h3,
+html.dark-mode .snapshot-section h3,
+.playback-page.dark-mode .snapshot-section h3 {
+    color: #f8fafc !important;
+}
+
+.dark-mode .snapshot-preview,
+body.dark-mode .snapshot-preview,
+html.dark-mode .snapshot-preview,
+.playback-page.dark-mode .snapshot-preview {
+    border-color: #111827 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - DOWNLOAD
+========================================================= */
+
+.dark-mode .download-btn,
+body.dark-mode .download-btn,
+html.dark-mode .download-btn,
+.playback-page.dark-mode .download-btn {
+    background: #111827 !important;
+
+    color: #ffffff !important;
+}
+
+.dark-mode .download-btn:hover,
+body.dark-mode .download-btn:hover,
+html.dark-mode .download-btn:hover,
+.playback-page.dark-mode .download-btn:hover {
+    background: #1e293b !important;
+}
+
+
+/* =========================================================
+   DARK MODE - FULL SCREEN
+========================================================= */
+
+.dark-mode .fullscreen-btn,
+body.dark-mode .fullscreen-btn,
+html.dark-mode .fullscreen-btn,
+.playback-page.dark-mode .fullscreen-btn {
+    background: #111827 !important;
+
+    color: #ffffff !important;
+}
+
+.dark-mode .fullscreen-btn:hover,
+body.dark-mode .fullscreen-btn:hover,
+html.dark-mode .fullscreen-btn:hover,
+.playback-page.dark-mode .fullscreen-btn:hover {
+    background: #1e293b !important;
+}
+
+
+/* =========================================================
+   DARK MODE - TOTAL RECORDINGS
+========================================================= */
+
+.dark-mode .total-recordings,
+body.dark-mode .total-recordings,
+html.dark-mode .total-recordings,
+.playback-page.dark-mode .total-recordings {
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   DARK MODE - RECORD CARDS
+========================================================= */
+
+.dark-mode .record-card,
+body.dark-mode .record-card,
+html.dark-mode .record-card,
+.playback-page.dark-mode .record-card {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+}
+
+.dark-mode .record-card:hover,
+body.dark-mode .record-card:hover,
+html.dark-mode .record-card:hover,
+.playback-page.dark-mode .record-card:hover {
+    border-color: #111827 !important;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   DARK MODE - ACTIVE CARD
+========================================================= */
+
+.dark-mode .record-card.active,
+body.dark-mode .record-card.active,
+html.dark-mode .record-card.active,
+.playback-page.dark-mode .record-card.active {
+    border: 3px solid #111827 !important;
+
+    box-shadow:
+        0 0 18px rgba(17, 24, 39, 0.35);
+}
+
+
+/* =========================================================
+   DARK MODE - NO SNAPSHOT
+========================================================= */
+
+.dark-mode .no-snapshot,
+body.dark-mode .no-snapshot,
+html.dark-mode .no-snapshot,
+.playback-page.dark-mode .no-snapshot {
+    background: #0f172a !important;
+
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - CARD TEXT
+========================================================= */
+
+.dark-mode .record-card h3,
+body.dark-mode .record-card h3,
+html.dark-mode .record-card h3,
+.playback-page.dark-mode .record-card h3 {
+    color: #f8fafc !important;
+}
+
+.dark-mode .record-card p,
+body.dark-mode .record-card p,
+html.dark-mode .record-card p,
+.playback-page.dark-mode .record-card p {
+    color: #cbd5e1 !important;
+}
+
+.dark-mode .recording-file,
+body.dark-mode .recording-file,
+html.dark-mode .recording-file,
+.playback-page.dark-mode .recording-file {
+    color: #94a3b8 !important;
+}
+
+.dark-mode .video-file-name,
+body.dark-mode .video-file-name,
+html.dark-mode .video-file-name,
+.playback-page.dark-mode .video-file-name {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .playback-page {
+        padding: 20px;
+    }
+
+    .top-bar {
+        margin-bottom: 25px;
+    }
+
+    .top-bar h1 {
+        font-size: 30px;
+
+        margin-top: 60px;
+    }
+
+    .back-btn {
+        left: 0;
+        top: 0;
+
+        padding: 0 16px;
+    }
+
+    .search-panel {
+        flex-direction: column;
+    }
+
+    .search-panel select,
+    .search-panel button {
+        width: 100%;
+
+        box-sizing: border-box;
+    }
+
+    .video-container {
+        padding: 18px;
+    }
+
+    .main-video {
+        max-height: 400px;
+    }
+
+    .video-container h2 {
+        font-size: 24px;
+    }
+
+    .playback-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .download-btn,
+    .fullscreen-btn {
+        width: 100%;
+
+        height: 48px;
+
+        min-height: 48px;
+
+        text-align: center;
+
+        box-sizing: border-box;
+    }
+
+    .recording-list {
+        grid-template-columns: 1fr;
+    }
+
+    .record-card img,
+    .no-snapshot {
+        height: 220px;
+    }
+
+    .total-recordings {
+        font-size: 22px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .playback-page {
+        padding: 15px;
+    }
+
+    .top-bar h1 {
+        font-size: 26px;
+
+        margin-top: 55px;
+    }
+
+    .back-btn {
+        font-size: 14px;
+
+        padding: 0 13px;
+    }
+
+    .video-container {
+        padding: 15px;
+    }
+
+    .search-panel select,
+    .search-panel button {
+        font-size: 14px;
+
+        padding: 0 12px;
+    }
+
+    .record-card h3 {
+        font-size: 18px;
+    }
+
+    .record-card p {
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   HOD ONLY - DELETE RECORDING BUTTON
+========================================================= */
+
+.playback-page .delete-recording-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 48px;
+    box-sizing: border-box;
+
+    padding: 0 22px;
+
+    background: #dc2626 !important;
+    color: #ffffff !important;
+
+    border: 1px solid #b91c1c !important;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* DELETE HOVER */
+
+.playback-page .delete-recording-btn:hover:not(:disabled) {
+    background: #b91c1c !important;
+
+    border-color: #991b1b !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 15px rgba(220, 38, 38, 0.25);
+}
+
+/* DELETE BUTTON PRESSED */
+
+.playback-page .delete-recording-btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* DELETE DISABLED / DELETING */
+
+.playback-page .delete-recording-btn:disabled {
+    background: #94a3b8 !important;
+    border-color: #94a3b8 !important;
+
+    color: #ffffff !important;
+
+    cursor: not-allowed;
+    opacity: 0.7;
+
+    transform: none;
+    box-shadow: none;
+}
+
+/* KEYBOARD FOCUS */
+
+.playback-page .delete-recording-btn:focus-visible {
+    outline: 3px solid #f87171;
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   DELETE BUTTON - RECORDING CARD
+========================================================= */
+
+.playback-page .record-card .delete-recording-btn {
+    display: flex;
+
+    width: 100%;
+    margin-top: 15px;
+
+    text-align: center;
+}
+
+/* =========================================================
+   DELETE BUTTON - MAIN VIDEO PLAYER
+========================================================= */
+
+.playback-page .video-information .delete-recording-btn {
+    min-width: 180px;
+    margin-top: 10px;
+}
+
+/* =========================================================
+   DARK MODE - DELETE BUTTON
+========================================================= */
+
+.dark-mode .playback-page .delete-recording-btn,
+body.dark-mode .playback-page .delete-recording-btn,
+html.dark-mode .playback-page .delete-recording-btn,
+.playback-page.dark-mode .delete-recording-btn {
+    background: #dc2626 !important;
+    color: #ffffff !important;
+
+    border-color: #b91c1c !important;
+}
+
+.dark-mode .playback-page .delete-recording-btn:hover:not(:disabled),
+body.dark-mode .playback-page .delete-recording-btn:hover:not(:disabled),
+html.dark-mode .playback-page .delete-recording-btn:hover:not(:disabled),
+.playback-page.dark-mode .delete-recording-btn:hover:not(:disabled) {
+    background: #ef4444 !important;
+
+    border-color: #dc2626 !important;
+}
+
+/* =========================================================
+   SEARCH DATE AND TIME INPUTS
+========================================================= */
+
+.playback-page .search-panel input[type="date"],
+.playback-page .search-panel input[type="time"] {
+    flex: 1;
+    min-width: 0;
+
+    height: 52px;
+    box-sizing: border-box;
+
+    padding: 0 16px;
+
+    background: #ffffff !important;
+    color: #111827 !important;
+
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-family: inherit;
+
+    outline: none;
+    color-scheme: light;
+}
+
+.playback-page .search-panel input:focus {
+    border-color: #111827 !important;
+}
+
+/* =========================================================
+   DARK MODE - DATE AND TIME INPUTS
+========================================================= */
+
+.dark-mode .playback-page .search-panel input,
+body.dark-mode .playback-page .search-panel input,
+html.dark-mode .playback-page .search-panel input,
+.playback-page.dark-mode .search-panel input {
+    background: #1e293b !important;
+    color: #f8fafc !important;
+
+    border-color: #334155 !important;
+
+    color-scheme: dark;
+}
+
+/* =========================================================
+   MOBILE RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .playback-page .delete-recording-btn {
+        width: 100%;
+        min-height: 48px;
+    }
+
+    .playback-page .video-information .delete-recording-btn {
+        width: 100%;
+    }
+
+    .playback-page .record-card .delete-recording-btn {
+        width: 100%;
+    }
+
+    .playback-page .search-panel input[type="date"],
+    .playback-page .search-panel input[type="time"] {
+        width: 100%;
+        flex: none;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .playback-page .delete-recording-btn {
+        font-size: 14px;
+        padding: 0 14px;
+    }
+}
