@@ -42,6 +42,8 @@ if (Number.isInteger(trustedProxyHops) && trustedProxyHops > 0) {
 
 app.disable("x-powered-by");
 
+app.disable("x-powered-by");
+
 // ======================================
 // MIDDLEWARE
 // ======================================

@@ -29,7 +29,14 @@ const login = (req, res) => {
         });
     }
 
+<<<<<<< HEAD
     const ip = req.ip;
+=======
+    const ip =
+        req.headers["x-forwarded-for"] ||
+        req.socket.remoteAddress ||
+        req.ip;
+>>>>>>> 445e3610b171eeed86aa8e3fe6b654ead802e69e
 
     const device = req.headers["user-agent"];
     const browser = req.headers["user-agent"];
@@ -56,6 +63,8 @@ const login = (req, res) => {
         }
 
         const user = result[0];
+        const safeUser = { ...user };
+        delete safeUser.password;
 
         const passwordMatches = await comparePassword(password, user.password);
 
@@ -143,7 +152,10 @@ const login = (req, res) => {
                 return res.json({
                     success: true,
                     message: "Login Successful",
+<<<<<<< HEAD
                     token,
+=======
+>>>>>>> 445e3610b171eeed86aa8e3fe6b654ead802e69e
                     user: safeUser,
                 });
             }
