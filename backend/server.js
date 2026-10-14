@@ -20,6 +20,8 @@ const detectionScheduleRoutes =
 
 const app = express();
 
+app.disable("x-powered-by");
+
 // ======================================
 // MIDDLEWARE
 // ======================================
@@ -27,6 +29,17 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
+
+app.use((err, req, res, next) => {
+    if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
+        return res.status(400).json({
+            success: false,
+            message: "Request body must contain valid JSON.",
+        });
+    }
+
+    return next(err);
+});
 
 // ======================================
 // STATIC VIDEO FILES
@@ -133,9 +146,8 @@ app.get("/api/health", (req, res) => {
     res.json({
         status: "OK",
         server: "Running",
-        database: "Connected"
+        database: db.state === "connected" ? "Connected" : "Unavailable"
     });
-
 });
 
 

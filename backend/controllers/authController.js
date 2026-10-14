@@ -5,10 +5,19 @@ const db = require("../config/db");
 // ==========================================
 const login = (req, res) => {
 
-    console.log("===== LOGIN REQUEST RECEIVED =====");
-    console.log(req.body);
-
     const { username, password } = req.body;
+
+    if (
+        typeof username !== "string" ||
+        typeof password !== "string" ||
+        !username.trim() ||
+        !password
+    ) {
+        return res.status(400).json({
+            success: false,
+            message: "Username and password are required.",
+        });
+    }
 
     const ip =
         req.headers["x-forwarded-for"] ||
@@ -42,6 +51,8 @@ const login = (req, res) => {
         }
 
         const user = result[0];
+        const safeUser = { ...user };
+        delete safeUser.password;
 
         // ----------------------------------
         // Check if account is blocked
@@ -98,7 +109,7 @@ const login = (req, res) => {
                 return res.json({
                     success: true,
                     message: "Login Successful",
-                    user: user,
+                    user: safeUser,
                 });
             }
         );

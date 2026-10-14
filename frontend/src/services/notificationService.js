@@ -148,7 +148,7 @@ export async function createPushSubscription() {
         // =================================================
 
         const vapidPublicKey =
-            import.meta.env.VITE_VAPID_PUBLIC_KEY;
+            process.env.REACT_APP_VAPID_PUBLIC_KEY;
 
 
         if (!vapidPublicKey) {
