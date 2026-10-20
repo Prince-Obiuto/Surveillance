@@ -170,11 +170,20 @@ app.get("/", (req, res) => {
 // ======================================
 
 app.get("/api/health", (req, res) => {
+    db.query("SELECT 1", (err) => {
+        if (err) {
+            return res.status(503).json({
+                status: "Unavailable",
+                server: "Running",
+                database: "Unavailable"
+            });
+        }
 
-    res.json({
-        status: "OK",
-        server: "Running",
-        database: db.state === "connected" ? "Connected" : "Unavailable"
+        return res.status(200).json({
+            status: "OK",
+            server: "Running",
+            database: "Connected"
+        });
     });
 });
 
